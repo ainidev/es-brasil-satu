@@ -57,11 +57,12 @@
 
     /* Hero */
     .hero{
-      background:
-        linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-        url('[images.unsplash.com](https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1920&auto=format&fit=crop)') no-repeat center center/cover;
-      height:100vh; color:var(--text-light); padding:0 8%;
-    }
+    height:100vh;
+    background-image: url("{{ asset('assets/logo.png') }}");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
     .hero-cell{ height:100vh; }
     .hero-content{ max-width:550px; padding-top:80px; }
     .hero h1{ font-size:42px; font-weight:700; margin-bottom:20px; line-height:1.3; }
@@ -338,8 +339,7 @@
   <section id="home" class="hero flex-container">
     <div class="hero-cell flex-col">
       <div class="hero-content">
-        <h1>"Temukan banyak <span>manfaat</span> di setiap Varian Rasa <span>Es Brasil</span> kami."</h1>
-        <p>Es Krim & Es Puter Tradisional Berkualitas Tinggi</p>
+
       </div>
     </div>
   </section>
@@ -360,7 +360,7 @@
         </p>
       </div>
       <div class="about-img-box">
-        <img src="/assets/img-2.jpeg" alt="Es Brasil Pack" />
+        <img src="/assets/poto.png" alt="Es Brasil Pack" />
       </div>
     </div>
   </section>
@@ -375,9 +375,9 @@
       <div class="slider-track">
         <!-- Set Asli -->
         <div class="grid-card">
-          <div class="card-img" style="background-image:url('[images.unsplash.com](https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=600&auto=format&fit=crop)');"></div>
-          <h3>Kelapa</h3>
-        </div>
+    <div class="card-img" style="background-image: url('{{ asset('assets/kelapa.png') }}');"></div>
+    <h3>Kelapa</h3>
+</div>
         <div class="grid-card">
           <div class="card-img" style="background-image:url('[images.unsplash.com](https://images.unsplash.com/photo-1534790566855-4cb788d389ec?q=80&w=600&auto=format&fit=crop)');"></div>
           <h3>Ketan</h3>
