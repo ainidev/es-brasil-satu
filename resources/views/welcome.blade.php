@@ -277,15 +277,15 @@
         }
 
         .about-layout {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 60px;
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 20px;
-            flex-wrap: wrap;
-        }
+  display: grid;
+  /* Membuat kolom otomatis: minimal 300px, dan akan memenuhi sisa layar (1fr) */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 60px;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+  align-items: center;
+}
 
         .about-text {
             flex: 1.2;
@@ -528,21 +528,22 @@
         /* ==========================================
    PERBAIKAN TOTAL MITRA KAMI (ANTI-BENTROK)
 ========================================== */
+/* --- SECTION MITRA KAMI (DIPERBARUI) --- */
 .partners-section {
     background-color: var(--primary-red);
-    padding: 60px 0;
+    padding: 80px 0;
+    margin: 60px 0;
+    border-radius: 60px; /* Efek melengkung */
     overflow: hidden;
     position: relative;
     width: 100%;
-    margin: 40px 0;
-    border-radius: 0px; /* Di-flat-kan dulu agar tidak memotong gambar */
 }
 
 .partners-section .section-title {
     color: var(--text-light);
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     text-align: center;
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 700;
 }
 
@@ -555,104 +556,54 @@
 
 .partners-track {
     display: flex;
-    gap: 30px;
-    animation: scrollOtomatis 20s linear infinite;
-    width: max-content; /* Memastikan track memanjang ke samping, bukan menumpuk */
+    gap: 40px; /* Jarak antar kartu */
+    animation: scrollOtomatis 25s linear infinite;
+    width: max-content; /* Mencegah elemen menumpuk */
 }
 
-/* Kartu Utama - Dipastikan bertipe Flex Box */
+/* Kartu Mitra - Dibuat lebih besar & melengkung */
 .mitra-card {
-    width: 200px;
-    height: 150px;
+    width: 260px;
+    height: 180px;
     background-color: #ffffff;
-    border-radius: 20px;
+    border-radius: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    flex-shrink: 0; /* Mencegah kartu gepeng */
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
 }
 
-/* Pembungkus Gambar Mitra Baru (BUKAN .slide) */
 .mitra-kotak-foto {
     width: 100%;
-    height: 70px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
-    position: relative; /* Menghapus paksa warisan absolute */
 }
 
-/* Gambar Logo Mitra */
 .mitra-kotak-foto img {
-    max-width: 100%;
+    max-width: 80%;
     max-height: 100%;
     object-fit: contain;
-    display: block;
-    opacity: 1 !important;
-    animation: none !important; /* Mematikan paksa animasi fade-out */
 }
 
 .mitra-card p {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     color: #333333;
-    margin: 0;
+    margin-top: 10px;
 }
 
-        /* Dots Indicator */
-        .dots-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 120px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 35px auto 0 auto;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .active-dot {
-            width: 12px;
-            height: 12px;
-            background-color: #ffffff;
-            border-radius: 50%;
-            position: absolute;
-            left: 0;
-            animation: dotsBerjalan 20s linear infinite;
-        }
-
-        /* Animasi */
-        @keyframes scrollOtomatis {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        @keyframes dotsBerjalan {
-            0% {
-                left: 0;
-            }
-
-            50% {
-                left: 108px;
-            }
-
-            100% {
-                left: 0;
-            }
-        }
-
+/* Animasi Seamless */
+@keyframes scrollOtomatis {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } /* Sempurna jika track berisi 2x jumlah item */
+}
         /*
    LOWONGAN KERJA PREMIUM
  */
@@ -1502,38 +1453,29 @@
         </div>
     </section>
 
-    <!-- SECTION MITRA KAMI -->
-<section id="mitra" class="partners-section">
+   <section id="mitra" class="partners-section">
     <h2 class="section-title">MITRA KAMI</h2>
 
     <div class="partners-slider">
         <div class="partners-track">
             
-            <!-- Mitra 1 -->
             <div class="mitra-card">
                 <div class="mitra-kotak-foto"><img src="assets/logo1.png" alt="Mitra 1" /></div>
                 <p>LuLu</p>
             </div>
-            
-            <!-- Mitra 2 -->
             <div class="mitra-card">
                 <div class="mitra-kotak-foto"><img src="assets/logo2.png" alt="Mitra 2" /></div>
                 <p>Mang Engking</p>
             </div>
-            
-            <!-- Mitra 3 -->
             <div class="mitra-card">
                 <div class="mitra-kotak-foto"><img src="assets/poto.png" alt="Mitra 3" /></div>
                 <p>NAGA Swalayan</p>
             </div>
-            
-            <!-- Mitra 4 -->
             <div class="mitra-card">
                 <div class="mitra-kotak-foto"><img src="assets/logo1.png" alt="Mitra 4" /></div>
                 <p>Sindang Reret</p>
             </div>
 
-            <!-- DUPLIKAT UNTUK JALUR ANIMASI LOOPING -->
             <div class="mitra-card">
                 <div class="mitra-kotak-foto"><img src="assets/logo1.png" alt="Mitra 1" /></div>
                 <p>LuLu</p>
@@ -1553,6 +1495,7 @@
 
         </div>
     </div>
+</section>
 </section>
     <!-- CTA / Lowongan Kerja -->
     <section id="lowongan" class="job-vacancy-section">
