@@ -11,6 +11,8 @@
 
     <!-- Font Awesome 6.4.0 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     
     <style>
         /* Reset & Variabel */
@@ -1075,6 +1077,8 @@ header.scrolled {
             color: #e1306c;
         }
 
+
+
         /* ==========================================
    ANIMATION
 ========================================== */
@@ -1214,6 +1218,240 @@ header.scrolled {
                 font-size: 120px;
             }
         }
+
+        /* Styling Tombol Chat */
+/* Styling Tombol Pemicu */
+.chat-trigger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.chat-trigger img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Styling Jendela Chat */
+.chat-window {
+    position: fixed;
+    bottom: 85px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-window.hidden {
+    display: none;
+}
+
+/* Tambahan untuk melengkapi header chat */
+.chat-header {
+    background: var(--primary-red);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-body {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.chat-body {
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-message.bot {
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.chat-footer input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+
+/* Styling tombol agar lebih modern dan menarik */
+.chat-options {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.option-btn {
+    background: #ffffff;
+    border: 1.5px solid var(--primary-red); /* Warna sesuai brand */
+    color: var(--primary-red);
+    padding: 8px 15px;
+    border-radius: 20px; /* Membuat bentuk oval */
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s ease; /* Efek transisi halus */
+}
+
+/* Efek saat mouse diarahkan ke tombol */
+.option-btn:hover {
+    background: var(--primary-red);
+    color: white;
+    transform: translateY(-2px); /* Efek tombol naik sedikit */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.promo-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7); z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+}
+.promo-content { width: 400px; position: relative; }
+.close-modal { position: absolute; top: -30px; right: 0; color: white; cursor: pointer; }
+.promo-swiper img { width: 100%; border-radius: 10px; }
+.hidden { display: none; }
+
+/* 1. Modal Promo (Pop-up saat awal buka) */
+/* --- 1. Modal Promo --- */
+.promo-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.promo-content {
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+.close-modal {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+.promo-swiper img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+/* --- 2. Styling Chatbot --- */
+.chat-window {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    overflow: hidden;
+}
+.chat-header {
+    background: linear-gradient(135deg, #e60000, #b30000);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+.chat-body {
+    height: 300px;
+    padding: 15px;
+    overflow-y: auto;
+}
+.chat-message.bot {
+    background: #f8f9fa;
+    border-left: 4px solid #e60000;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 0 15px 15px 15px;
+}
+
+/* --- 3. Tombol Chatbot Interaktif --- */
+.chat-options {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+}
+.option-btn {
+    background: #ffffff;
+    border: 1.5px solid #e60000;
+    color: #e60000;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.option-btn:hover {
+    background: #e60000;
+    color: white;
+}
+
+/* --- 4. Utilities --- */
+.hidden { display: none; }
+
+/* Pastikan swiper wrapper memiliki display flex agar slide berjejer */
+.swiper-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Memastikan setiap slide memiliki ukuran yang benar */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Memastikan gambar tidak tersembunyi */
+.promo-swiper img {
+    width: 100%;
+    height: auto;
+    display: block; /* Penting agar tidak ada celah di bawah gambar */
+    object-fit: contain; /* Agar gambar tidak terpotong */
+}
     </style>
 </head>
 
@@ -1529,25 +1767,181 @@ header.scrolled {
                     </a>
 
                 </div>
-            </div>
 
+              <!-- Tombol Pemicu -->
+   <!-- Tombol Pemicu -->
+<div class="chat-trigger" onclick="toggleChat()">
+    <img src="{{ asset('assets/customer.png') }}" alt="Chat">
+</div>
+
+<!-- Jendela Chat -->
+<div id="chat-window" class="chat-window hidden">
+    <div class="chat-header">
+        <span>Asisten Es Brasil</span>
+        <button onclick="toggleChat()">X</button>
+    </div>
+    
+    <!-- Area Pesan -->
+    <div class="chat-body">
+        <div class="chat-message bot">
+            <p>Halo Sahabat Brasil! Selamat datang! Ada yang bisa kami bantu hari ini? ✨</p>
+        </div>
+        
+        <!-- Area Tombol Interaktif -->
+        <div class="chat-options">
+            <button class="option-btn" onclick="handleOption('Produk')">🍦 Produk Kami</button>
+            <button class="option-btn" onclick="handleOption('Lokasi')">📍 Lokasi Cabang</button>
+        </div>
+    </div>
+
+    <!-- Area Input -->
+    <div class="chat-footer">
+        <input type="text" id="chat-input" placeholder="Ketik pesan...">
+        <button onclick="sendMessage()">➤</button>
+    </div>
+</div>
+
+<!-- Modal Background -->
+<div id="promo-modal" class="promo-overlay">
+    <div class="promo-content">
+        <button class="close-modal" onclick="closePromo()">×</button>
+        
+        <!-- Swiper Slider -->
+        <div class="swiper promo-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="{{ asset('assets/sirsak.jpg') }}" alt="Promo 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{{ asset('assets/rasa.jpg') }}" alt="Promo 2">
+                </div>
+            </div>
+            <!-- Navigasi -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div> <!-- Penutup promo-content -->
+</div> <!-- Penutup promo-overlay -->
+</div>
     </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Es Brasil. All Rights Reserved.</p>
     </footer>
-    <script>
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
 
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    /**
+     * 1. Inisialisasi Fitur Halaman
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+        // Inisialisasi Slider Promo
+        new Swiper('.promo-swiper', {
+            loop: true,
+            navigation: { 
+                nextEl: '.swiper-button-next', 
+                prevEl: '.swiper-button-prev' 
+            },
         });
-    </script>
-</body>
+    });
 
+    // Munculkan promo otomatis saat halaman selesai dimuat
+    window.onload = () => {
+        const promoModal = document.getElementById('promo-modal');
+        if (promoModal) promoModal.classList.remove('hidden');
+    };
+
+    /**
+     * 2. Fungsi Chatbot
+     */
+
+    // Membuka/menutup jendela chat
+    function toggleChat() {
+        const chatWindow = document.getElementById('chat-window');
+        if (chatWindow) chatWindow.classList.toggle('hidden');
+    }
+
+    // Menangani klik tombol pilihan (Produk/Lokasi)
+    function handleOption(option) {
+        const input = document.getElementById('chat-input');
+        if (input) {
+            input.value = option;
+            sendMessage();
+        }
+    }
+
+    // Mengirim pesan
+    function sendMessage() {
+        const input = document.getElementById('chat-input');
+        const text = input.value.trim();
+        
+        if (text === "") return;
+
+        addMessage(text, 'user');
+        input.value = "";
+
+        setTimeout(() => {
+            let response = "Maaf, saya tidak mengerti. Coba pilih Produk atau Lokasi.";
+            const lowerText = text.toLowerCase();
+            
+            if (lowerText.includes('produk')) {
+                response = "Varian kami ada: Duren, Coklat, Kopi, dan Sirsak!";
+            } else if (lowerText.includes('lokasi')) {
+                response = "Kami tersedia di berbagai swalayan terdekat!";
+            }
+            
+            addMessage(response, 'bot');
+        }, 500);
+    }
+
+    // Menambahkan pesan ke tampilan
+    function addMessage(text, sender) {
+        const body = document.querySelector('.chat-body');
+        if (!body) return;
+
+        const msg = document.createElement('div');
+        msg.className = `chat-message ${sender}`;
+        msg.innerHTML = `<p>${text}</p>`;
+        
+        body.appendChild(msg);
+        body.scrollTop = body.scrollHeight;
+    }
+
+    // Menutup Modal Promo
+    function closePromo() {
+        const promoModal = document.getElementById('promo-modal');
+        if (promoModal) promoModal.classList.add('hidden');
+    }
+
+    /**
+     * 3. Global Event Listeners
+     */
+
+    // Kirim pesan dengan Enter
+    const chatInput = document.getElementById('chat-input');
+    if (chatInput) {
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    }
+
+    // Efek scroll pada header
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (header) {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        }
+    });
+
+    new Swiper('.promo-swiper', {
+    loop: true,
+    slidesPerView: 1, // Memastikan hanya 1 gambar yang tampil per slide
+    navigation: { 
+        nextEl: '.swiper-button-next', 
+        prevEl: '.swiper-button-prev' 
+    },
+});
+</script>
+</body>
 </html>
