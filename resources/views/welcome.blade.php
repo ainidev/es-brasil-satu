@@ -200,13 +200,23 @@
 
         /* Hero */
         .hero {
-            height: calc(100vh - 80px);
-            background-image: url("{{ asset('assets/logo4.png') }}");
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin-top: 80px;
-        }
+    /* 1. Atur tinggi dan jarak agar proporsional */
+    height: 75vh; /* Menggunakan vh yang lebih fleksibel */
+    margin: 100px 40px 40px 50ppx; /* Atas, Kanan, Bawah, Kiri */
+
+    /* 2. Pakai gambar yang KOTAK BIASA (tanpa edit lengkungan bawaan) */
+    background-image: url("{{ asset('assets/logo4.png') }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* 3. CSS yang bertugas membuat lengkungan sempurna */
+    border-radius: 40px; 
+    overflow: hidden; /* Memotong gambar kotak tadi menjadi melengkung */
+
+    /* 4. Efek bayangan biar makin estetik */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
 
         .hero-cell {
             height: calc(100vh - 80px);
