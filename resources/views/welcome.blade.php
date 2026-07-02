@@ -34,13 +34,13 @@
         }
 
      body {
-    margin: 0;              /* Menghilangkan jarak bawaan browser */
+    margin: 0;              
     padding: 0;
-    box-sizing: border-box; /* Memastikan padding tidak menambah lebar elemen */
+    box-sizing: border-box; 
     color: var(--text-dark);
     background-color: var(--text-light);
-    overflow-x: hidden;     /* Mencegah scroll horizontal */
-    font-family: 'Poppins', sans-serif; /* Pindahkan font ke sini agar berlaku global */
+    overflow-x: hidden;    
+    font-family: 'Poppins', sans-serif; 
 }
 
         /* Helper untuk Layout "table-like" */
@@ -55,10 +55,7 @@
             vertical-align: middle;
         }
 
-        /* ==========================================
-           HEADER & NAVBAR
-        ========================================== */
-     /* Header Ramping */
+        
 /* ==========================================
    HEADER & NAVBAR
    ========================================== */
@@ -71,7 +68,7 @@ header {
     z-index: 1000;
     transition: all 0.4s ease;
     background: transparent;
-    border: none !important; /* Mencegah munculnya garis merah */
+    border: none !important; 
     outline: none !important;
 }
 
@@ -155,7 +152,7 @@ header.scrolled {
     height: 100vh;
     width: 100%;
     background-image: url("{{ asset('assets/logo4.png') }}");
-    background-size: cover; /* Gunakan cover agar full screen */
+    background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
     display: table;
@@ -245,15 +242,15 @@ header.scrolled {
             font-weight: 700;
         }
 
-        /* Container Slider Gambar */
+        
         /* Container Slider Gambar */
         .about-img-box {
             flex: 1;
             min-width: 300px;
             position: relative;
-            /* Penting untuk menumpuk gambar */
+           
             height: 300px;
-            /* Sesuaikan dengan tinggi fotomu */
+            
         }
 
         .slider-container {
@@ -268,7 +265,7 @@ header.scrolled {
             left: 0;
             width: 100%;
             opacity: 0;
-            /* Durasi total 3 detik, tiap foto muncul 1 detik */
+            
             animation: snapEffect 3s infinite;
         }
 
@@ -303,25 +300,24 @@ header.scrolled {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Menjaga foto tidak gepeng */
+            
             display: block;
             border-radius: 25px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
-        /* Varian Rasa - Banner Merah + Slider */
+       
        /* Varian Rasa - Banner Merah (Dibuat Lebih Besar & Luas) */
 .variants {
     background-color: var(--primary-red);
     color: var(--text-light);
 
-    /* 1. Margin tetap agar ada jarak antar section */
+   
     margin: 60px 0; 
 
-    /* 2. Border-radius diperbesar agar lebih melengkung dan modern */
-    border-radius: 60px;
+    
 
-    /* 3. Padding ditingkatkan (dari 60px ke 80px) agar area merah lebih luas */
+    
     padding: 80px 8%;
 
     width: 100%;
@@ -331,7 +327,7 @@ header.scrolled {
 /* Judul Section - Disesuaikan agar lebih menonjol */
 .variants .section-title {
     color: var(--text-light);
-    font-size: 48px; /* Judul dibuat lebih besar mengikuti area banner */
+    font-size: 48px; 
     margin-bottom: 50px;
     text-align: center;
 }
@@ -339,18 +335,18 @@ header.scrolled {
 /* Slider Track - Memberikan jarak lebih antar kartu */
 .slider-track {
     display: flex;
-    gap: 40px; /* Jarak antar kartu diperbesar */
-    animation: scrollOtomatis 25s linear infinite; /* Sedikit melambat agar lebih nyaman dilihat */
+    gap: 40px;
+    animation: scrollOtomatis 25s linear infinite; 
     will-change: transform;
 }
 
 /* Grid Card - Sedikit diperbesar agar tidak terlihat kecil di banner besar */
 .grid-card {
-    width: 260px; /* Kartu sedikit diperlebar */
+    width: 260px; 
     flex: 0 0 auto;
-    background: rgba(255, 255, 255, 0.15); /* Sedikit lebih pekat */
+    background: rgba(255, 255, 255, 0.15); 
     backdrop-filter: blur(8px);
-    border-radius: 25px; /* Border radius kartu menyesuaikan banner */
+    border-radius: 25px; 
     padding: 25px;
     text-align: center;
     transition: transform 0.3s;
@@ -358,7 +354,7 @@ header.scrolled {
 
 .card-img {
     width: 100%;
-    height: 200px; /* Tinggi gambar diperbesar */
+    height: 200px; 
     border-radius: 15px;
     margin-bottom: 20px;
     background-position: center;
@@ -366,13 +362,13 @@ header.scrolled {
     background-color: rgba(0, 0, 0, 0.1);
 }
         /* Tagline */
-        /* Wrapper untuk memastikan posisi center */
+        
         .tagline-wrapper {
             display: flex;
             justify-content: center;
             width: 100%;
             margin: 30px 0;
-            /* Memberi jarak dengan elemen lain */
+           
         }
 
         /* Container Tagline yang Clean (Tanpa Bingkai) */
@@ -384,10 +380,10 @@ header.scrolled {
 }
 
 .tagline-container {
-    background: transparent; /* Background transparan */
+    background: transparent; 
     padding: 15px 40px;
-    border: none;            /* Menghilangkan bingkai */
-    box-shadow: none;        /* Menghilangkan bayangan */
+    border: none;           
+    box-shadow: none;       
     font-size: 28px;
     color: #333;
     text-align: center;
@@ -400,24 +396,22 @@ header.scrolled {
     text-transform: uppercase;
     margin-right: 5px;
 }
-        /* Tersedia di Toko - Grid jadi Slider */
+         
         /* ==========================================
    SECTION "TERSEDIA DI TOKO"
    ========================================== */
 
    .separator {
     border: 0;
-    border-top: 1px solid #ccc; /* Menggunakan warna merah navbar */
-    margin: 50px auto 50px auto;             /* Margin atas: 20px, margin bawah: 15px (lebih dekat ke teks) */
-    width: 90%;                               /* Panjang garis diperpanjang menjadi 90% */
+    border-top: 1px solid #ccc; 
+    margin: 50px auto 50px auto;            
+    width: 90%;                             
 }
 .stores {
-    /* Background diubah menjadi putih */
+
     background-color: #ffffff; 
     
-    /* border-radius: [kiri-atas] [kanan-atas] [kanan-bawah] [kiri-bawah]
-       Bagian atas tetap siku (0), bawah melengkung (40px)
-    */
+   
     border-radius: 0 0 40px 40px; 
     
     /* Padding diperbesar untuk memberi efek bingkai lebih megah/besar */
@@ -430,39 +424,39 @@ header.scrolled {
 /* Judul Section */
 .section-title {
     text-align: center;
-    font-size: 1.6rem;                        /* Ukuran font diperkecil agar lebih elegan */
-    color: var(--primary-red);                /* Mengubah warna font menjadi merah navbar */
-    letter-spacing: 1.5px;                    /* Menyesuaikan spasi huruf agar tetap rapi */
+    font-size: 1.6rem;                        
+    color: var(--primary-red);               
+    letter-spacing: 1.5px;                    
     text-transform: uppercase;
     margin-bottom: 45px;
-    font-weight: 600;                         /* Mempertebal sedikit agar tetap tegas walau font kecil */
+    font-weight: 600;                       
 }
 
 /* Card Toko */
 .store-card {
-    width: 240px; /* Sedikit diperlebar agar seimbang */
+    width: 240px; 
     flex: 0 0 auto;
-    background: #f9f9f9; /* Sedikit warna agar kartu menonjol di atas latar putih */
+    background: #f9f9f9; 
     border-radius: 20px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); /* Bayangan lembut */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); 
     transition: transform 0.3s ease;
 }
 
 .store-card:hover {
-    transform: translateY(-5px); /* Efek melayang saat di-hover */
+    transform: translateY(-5px); 
 }
 
 /* Gambar Toko */
 .store-img {
     width: 100%;
     height: 160px;
-    background-color: #ddd; /* Ini akan tertutup jika gambar berhasil dimuat */
+    background-color: #ddd; 
     border-radius: 10px;
     margin-bottom: 12px;
     background-position: center;
-    background-size: cover; /* Pastikan ini ada agar gambar tidak gepeng */
+    background-size: cover; 
     background-repeat: no-repeat;
 }
 
@@ -470,7 +464,7 @@ header.scrolled {
 .store-card p {
     font-weight: 600;
     color: var(--primary-red);
-    font-size: 16px; /* Font sedikit dinaikkan agar lebih terbaca */
+    font-size: 16px; 
     margin: 0;
 }
        
@@ -480,7 +474,7 @@ header.scrolled {
     background-color: var(--primary-red);
     padding: 80px 0;
     margin: 60px 0;
-    border-radius: 60px; /* Efek melengkung */
+    border-radius: 60px; 
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -503,9 +497,9 @@ header.scrolled {
 
 .partners-track {
     display: flex;
-    gap: 40px; /* Jarak antar kartu */
+    gap: 40px; 
     animation: scrollOtomatis 25s linear infinite;
-    width: max-content; /* Mencegah elemen menumpuk */
+    width: max-content; 
 }
 
 /* Kartu Mitra - Dibuat lebih besar & melengkung */
@@ -549,7 +543,7 @@ header.scrolled {
 /* Animasi Seamless */
 @keyframes scrollOtomatis {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); } /* Sempurna jika track berisi 2x jumlah item */
+    to { transform: translateX(-50%); }/* Sempurna jika track berisi 2x jumlah item */ 
 }
         /*
    LOWONGAN KERJA PREMIUM
