@@ -1400,7 +1400,7 @@ header.scrolled {
     overflow-y: auto;
 }
 .chat-message.bot {
-    background: #f8f9fa;
+    background: #fc0f0f;
     border-left: 4px solid #e60000;
     padding: 10px;
     margin-bottom: 10px;
@@ -1810,10 +1810,10 @@ header.scrolled {
         <div class="swiper promo-swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="{{ asset('assets/sirsak.jpg') }}" alt="Promo 1">
+                    <img src="{{ asset('assets/promo1.png') }}" alt="Promo 1">
                 </div>
                 <div class="swiper-slide">
-                    <img src="{{ asset('assets/rasa.jpg') }}" alt="Promo 2">
+                    <img src="{{ asset('assets/promo2.png') }}" alt="Promo 2">
                 </div>
             </div>
             <!-- Navigasi -->
