@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* Reset & Variabel */
@@ -80,36 +85,94 @@ header.scrolled {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.nav-table {
-    display: table;
-    width: 100%;
-    border-collapse: collapse;
+/* ==========================================
+   NAVBAR LAYOUT
+========================================== */
+
+.nav-table{
+    display:table;
+    width:100%;
+    border-collapse:collapse;
 }
 
-.nav-logo-cell {
-    display: table-cell;
-    vertical-align: middle;
-    width: 25%;
+.nav-logo-cell{
+    display:table-cell;
+    vertical-align:middle;
+    width:25%;
 }
 
-.nav-menu-cell {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: right;
-    width: 75%;
+.nav-menu-cell{
+    display:table-cell;
+    vertical-align:middle;
+    text-align:right;
+    width:75%;
 }
 
-.nav-logo {
-    color: var(--text-light);
-    font-size: 28px;
-    font-weight: 800;
-    font-style: italic;
-    text-decoration: none;
-    transition: all 0.3s ease;
+
+/* ==========================================
+   LOGO PREMIUM
+========================================== */
+
+.nav-logo-wrapper{
+    display:inline-block;
+    line-height:1;
 }
 
-.nav-logo span { color: var(--primary-red); }
+.nav-logo{
+    display:block;
 
+    font-family:'Great Vibes',cursive;
+
+    color:var(--text-light);
+
+    font-size:64px;
+
+    font-weight:400;
+
+    text-decoration:none;
+
+    letter-spacing:1px;
+
+    transition:all .3s ease;
+}
+
+.nav-logo:hover{
+    transform:scale(1.03);
+}
+
+.nav-logo span{
+    color:var(--primary-red);
+}
+
+.nav-logo-sub{
+    display:block;
+
+    color:rgba(255,255,255,.95);
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:10px;
+
+    font-weight:500;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-top:-8px;
+
+    margin-left:6px;
+}
+
+
+/* ketika navbar discroll */
+header.scrolled .nav-logo{
+    font-size:58px;
+}
+
+header.scrolled .nav-logo-sub{
+    opacity:.95;
+}
 /* Menu Rapi */
 .nav-menu a {
     display: inline-block;
@@ -176,24 +239,60 @@ header.scrolled {
 }
 
 /* Badge Brand */
-        .brand-badge-container {
-            text-align: center;
-            margin-top: -50px;
-            position: relative;
-            z-index: 10;
-        }
+       /* ==========================================
+   BRAND BADGE PREMIUM
+========================================== */
 
-        .brand-badge {
-            display: inline-block;
-            background-color: var(--primary-red);
-            color: var(--text-light);
-            padding: 20px 60px;
-            font-size: 32px;
-            font-weight: 700;
-            font-style: italic;
-            border-radius: 25px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
+.brand-badge-container{
+    text-align:center;
+    margin-top:-80px;
+    position:relative;
+    z-index:100;
+}
+
+.brand-badge{
+    display:inline-block;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff0015,
+            #d90012
+        );
+
+    padding:30px 80px;
+
+    border-radius:28px;
+
+    box-shadow:
+        0 15px 35px rgba(230,0,18,.35);
+
+    transition:.3s;
+}
+
+.brand-badge:hover{
+    transform:
+        translateY(-5px)
+        scale(1.02);
+
+    box-shadow:
+        0 20px 40px rgba(230,0,18,.45);
+}
+
+.brand-badge-logo{
+    font-family:'Great Vibes',cursive;
+    color:#fff;
+    font-size:72px;
+    line-height:1;
+}
+
+.brand-badge-sub{
+    color:#fff;
+    font-size:15px;
+    font-weight:500;
+    letter-spacing:1px;
+    margin-top:-8px;
+}
         /* Section umum */
         section {
             padding: 80px 8%;
@@ -310,59 +409,167 @@ header.scrolled {
 
        
        /* Varian Rasa - Banner Merah (Dibuat Lebih Besar & Luas) */
-.variants {
-    background-color: var(--primary-red);
+/* ==========================================
+   SECTION VARIAN RASA
+========================================== */
+
+.variants{
+    background: var(--primary-red);
     color: var(--text-light);
 
-   
-    margin: 60px 0; 
-
-    
-
-    
-    padding: 80px 8%;
+    margin: 60px 0;
+    padding: 70px 8% 90px;
 
     width: 100%;
     box-sizing: border-box;
+
+    position: relative;
+    overflow: hidden;
 }
 
-/* Judul Section - Disesuaikan agar lebih menonjol */
-.variants .section-title {
-    color: var(--text-light);
-    font-size: 48px; 
-    margin-bottom: 50px;
+/* ==========================================
+   JUDUL
+========================================== */
+
+.variants .section-title{
+    color: #fff;
+
+    font-size: 56px;
+    font-weight: 800;
+
+    letter-spacing: 8px;
+    text-transform: uppercase;
+
     text-align: center;
+
+    margin-bottom: 12px;   /* sebelumnya terlalu jauh */
 }
 
-/* Slider Track - Memberikan jarak lebih antar kartu */
-.slider-track {
-    display: flex;
-    gap: 40px;
-    animation: scrollOtomatis 25s linear infinite; 
-    will-change: transform;
+/* garis putih */
+.section-line{
+    width: 100px;
+    height: 7px;
+
+    background: white;
+
+    border-radius: 50px;
+
+    margin: 0 auto 50px;   /* garis dinaikkan */
 }
 
-/* Grid Card - Sedikit diperbesar agar tidak terlihat kecil di banner besar */
-.grid-card {
-    width: 260px; 
-    flex: 0 0 auto;
-    background: rgba(255, 255, 255, 0.15); 
+/* ==========================================
+   SWIPER
+========================================== */
+
+.produkSwiper{
+    padding: 0 40px 70px;
+}
+
+/* beri jarak antar kartu */
+.produkSwiper .swiper-wrapper{
+    padding: 10px 0;
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+.grid-card{
+    background: rgba(255,255,255,.12);
+
     backdrop-filter: blur(8px);
-    border-radius: 25px; 
-    padding: 25px;
-    text-align: center;
-    transition: transform 0.3s;
+
+    border-radius: 28px;
+
+    padding: 22px;
+
+    height: 380px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    transition: .3s;
 }
 
-.card-img {
-    width: 100%;
-    height: 200px; 
-    border-radius: 15px;
-    margin-bottom: 20px;
-    background-position: center;
-    background-size: cover;
-    background-color: rgba(0, 0, 0, 0.1);
+.grid-card:hover{
+    transform: translateY(-8px);
+
+    background: rgba(255,255,255,.18);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.18);
 }
+
+/* gambar */
+.card-img{
+    width: 100%;
+    height: 260px;
+
+    border-radius: 20px;
+
+    background-size: cover;
+    background-position: center;
+
+    margin-bottom: 22px;
+}
+
+/* nama */
+.grid-card h3{
+    color: white;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.swiper-button-prev,
+.swiper-button-next{
+    background: white;
+
+    width: 55px !important;
+    height: 55px !important;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.18);
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after{
+    font-size: 20px !important;
+    color: var(--primary-red);
+    font-weight: bold;
+}
+
+/* ==========================================
+   DOTS
+========================================== */
+
+.swiper-pagination{
+    bottom: 10px !important;
+}
+
+.swiper-pagination-bullet{
+    width: 12px;
+    height: 12px;
+
+    background: white;
+
+    opacity: .4;
+}
+
+.swiper-pagination-bullet-active{
+    opacity: 1;
+}
+
+
         /* Tagline */
         
         .tagline-wrapper {
@@ -403,149 +610,402 @@ header.scrolled {
    SECTION "TERSEDIA DI TOKO"
    ========================================== */
 
-   .separator {
-    border: 0;
-    border-top: 1px solid #ccc; 
-    margin: 50px auto 50px auto;            
-    width: 90%;                             
-}
-.stores {
+  /* ==========================================
+   SECTION TERSEDIA DI TOKO
+========================================== */
 
-    background-color: #ffffff; 
-    
-   
-    border-radius: 0 0 40px 40px; 
-    
-    /* Padding diperbesar untuk memberi efek bingkai lebih megah/besar */
-    padding: 80px 5%; 
-    
-    /* Memastikan konten tidak keluar dari lengkungan */
-    overflow: hidden; 
+.separator{
+    border:0;
+    border-top:1px solid #ddd;
+    margin:40px auto 60px;
+    width:85%;
 }
 
-/* Judul Section */
-.section-title {
-    text-align: center;
-    font-size: 1.6rem;                        
-    color: var(--primary-red);               
-    letter-spacing: 1.5px;                    
-    text-transform: uppercase;
-    margin-bottom: 45px;
-    font-weight: 600;                       
+.stores{
+    background:#fff;
+    padding:60px 6%;
+    overflow:hidden;
+    position:relative;
 }
 
-/* Card Toko */
-.store-card {
-    width: 240px; 
-    flex: 0 0 auto;
-    background: #f9f9f9; 
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); 
-    transition: transform 0.3s ease;
+/* ==========================================
+   JUDUL
+========================================== */
+
+.stores .section-title{
+    text-align:center;
+    font-size:42px;
+    font-weight:800;
+    color:var(--primary-red);
+    text-transform:uppercase;
+    letter-spacing:4px;
+    margin-bottom:50px;
 }
 
-.store-card:hover {
-    transform: translateY(-5px); 
+/* ==========================================
+   WRAPPER SLIDER
+========================================== */
+
+.stores .slider-wrap{
+    width:100%;
+    overflow:hidden;
+    position:relative;
 }
 
-/* Gambar Toko */
-.store-img {
-    width: 100%;
-    height: 160px;
-    background-color: #ddd; 
-    border-radius: 10px;
-    margin-bottom: 12px;
-    background-position: center;
-    background-size: cover; 
-    background-repeat: no-repeat;
+/* WAJIB FLEX */
+.stores .slider-track{
+    display:flex;
+    align-items:flex-start;
+    gap:30px;
+
+    width:max-content;
+
+    animation:scrollStore 20s linear infinite;
 }
 
-/* Nama Toko */
-.store-card p {
-    font-weight: 600;
-    color: var(--primary-red);
-    font-size: 16px; 
-    margin: 0;
+.stores .slider-track:hover{
+    animation-play-state:paused;
 }
-       
+
+/* ==========================================
+   CARD TOKO
+========================================== */
+
+.store-card{
+    width:260px;
+    flex-shrink:0;
+
+    background:#fff;
+
+    border-radius:25px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.store-card:hover{
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.12);
+}
+
+.store-img{
+    width:100%;
+    height:180px;
+
+    border-radius:18px;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    margin-bottom:18px;
+}
+
+.store-card p{
+    color:var(--primary-red);
+
+    font-size:22px;
+    font-weight:700;
+
+    margin:0;
+}
+
+/* ==========================================
+   ANIMASI
+========================================== */
+
+@keyframes scrollStore{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+    .store-card{
+        width:200px;
+    }
+
+    .store-img{
+        height:150px;
+    }
+
+    .stores .section-title{
+        font-size:30px;
+    }
+}
 
 /* --- SECTION MITRA KAMI (DIPERBARUI) --- */
-.partners-section {
-    background-color: var(--primary-red);
-    padding: 80px 0;
-    margin: 60px 0;
-    border-radius: 60px; 
-    overflow: hidden;
-    position: relative;
-    width: 100%;
+/* ==========================================
+   MITRA KAMI - PREMIUM VERSION
+   ========================================== */
+
+/* ===========================
+SECTION
+=========================== */
+
+.partners-section{
+    position:relative;
+    background:linear-gradient(
+        135deg,
+        #ff0015,
+        #d60012
+    );
+
+    padding:70px 40px;
+    border-radius:50px;
+    overflow:hidden;
+    margin:80px 0;
 }
 
-.partners-section .section-title {
-    color: var(--text-light);
-    margin-bottom: 50px;
-    text-align: center;
-    font-size: 36px;
-    font-weight: 700;
+/* lingkaran kiri */
+.partners-section::before{
+    content:'';
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(255,255,255,.06);
+    top:-150px;
+    left:-150px;
 }
 
-.partners-slider {
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
+/* lingkaran kanan */
+.partners-section::after{
+    content:'';
+    position:absolute;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    background:rgba(255,255,255,.05);
+    bottom:-120px;
+    right:-120px;
 }
 
-.partners-track {
-    display: flex;
-    gap: 40px; 
-    animation: scrollOtomatis 25s linear infinite;
-    width: max-content; 
+/* ===========================
+HEADER
+=========================== */
+
+.partners-header{
+    text-align:center;
+    margin-bottom:50px;
 }
 
-/* Kartu Mitra - Dibuat lebih besar & melengkung */
-.mitra-card {
-    width: 260px;
-    height: 180px;
-    background-color: #ffffff;
-    border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    flex-shrink: 0;
+.partners-icon{
+    color:white;
+    font-size:30px;
+    margin-bottom:10px;
 }
 
-.mitra-kotak-foto {
-    width: 100%;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
+.section-title{
+    color:white;
+    font-size:48px;
+    font-weight:800;
+    letter-spacing:10px;
+    margin-bottom:15px;
 }
 
-.mitra-kotak-foto img {
-    max-width: 80%;
-    max-height: 100%;
-    object-fit: contain;
+.section-line{
+    width:80px;
+    height:5px;
+    background:white;
+    border-radius:50px;
+    margin:auto;
 }
 
-.mitra-card p {
-    font-size: 15px;
-    font-weight: 700;
-    color: #333333;
-    margin-top: 10px;
+/* ===========================
+SWIPER
+=========================== */
+
+.partnersSwiper{
+    padding:20px 10px 60px;
 }
 
-/* Animasi Seamless */
-@keyframes scrollOtomatis {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }/* Sempurna jika track berisi 2x jumlah item */ 
+/* ===========================
+CARD
+=========================== */
+
+.mitra-card{
+    background:white;
+
+    height:320px;
+
+    border-radius:35px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.12);
+
+    transition:.4s;
+}
+
+.mitra-card:hover{
+    transform:
+        translateY(-12px)
+        scale(1.03);
+
+    box-shadow:
+        0 25px 40px rgba(0,0,0,.2);
+}
+
+/* shine effect */
+
+.mitra-card::before{
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:50%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.7),
+        transparent
+    );
+
+    transition:.7s;
+}
+
+.mitra-card:hover::before{
+    left:150%;
+}
+
+/* ===========================
+FOTO
+=========================== */
+
+.mitra-kotak-foto{
+    width:120px;
+    height:120px;
+
+    border-radius:50%;
+
+    background:#f7f7f7;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:25px;
+
+    transition:.3s;
+}
+
+.mitra-card:hover .mitra-kotak-foto{
+    transform:scale(1.08);
+}
+
+.mitra-kotak-foto img{
+    width:75%;
+    height:75%;
+    object-fit:contain;
+}
+
+/* ===========================
+TEXT
+=========================== */
+
+.mitra-card h3{
+    font-size:20px;
+    font-weight:700;
+    color:#333;
+    margin:0;
+}
+
+.card-decoration{
+    margin-top:20px;
+    color:red;
+    font-size:26px;
+    letter-spacing:5px;
+}
+
+/* ===========================
+ARROW
+=========================== */
+
+.swiper-button-next,
+.swiper-button-prev{
+    background:white;
+    width:50px !important;
+    height:50px !important;
+    border-radius:50%;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after{
+    font-size:18px !important;
+    color:#ff0000;
+    font-weight:bold;
+}
+
+/* ===========================
+DOTS
+=========================== */
+
+.swiper-pagination-bullet{
+    width:12px;
+    height:12px;
+    background:white;
+    opacity:.5;
+}
+
+.swiper-pagination-bullet-active{
+    opacity:1;
+}
+
+/* ===========================
+RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+    .partners-section{
+        padding:50px 20px;
+        border-radius:30px;
+    }
+
+    .section-title{
+        font-size:30px;
+        letter-spacing:5px;
+    }
+
+    .mitra-card{
+        height:250px;
+    }
+
 }
         /*
    LOWONGAN KERJA PREMIUM
@@ -1454,88 +1914,70 @@ header.scrolled {
 }
 
 
-  /* Styling CSS */
-  /* Container tombol yang melayang */
-/* Container utama */
-.floating-wrapper {
-    position: fixed;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    z-index: 9999;
+  
+/* ==========================================
+   MENU NORMAL
+========================================== */
+.nav-menu a {
     display: inline-block;
-}
-
-/* Tombol close */
-.close-btn {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 32px;
-    height: 32px;
-    border: none;
-    border-radius: 50%;
-    background: #ff4d4d;
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10000;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    transition: all 0.2s ease;
-}
-
-.close-btn:hover {
-    transform: scale(1.1);
-    background: #ff3333;
-}
-
-/* Tombol gambar */
-.floating-btn {
-    display: block;
+    position: relative;
+    color: var(--text-light);
     text-decoration: none;
-    transition: transform 0.3s ease;
+    margin-left: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.9;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
 }
 
-.floating-btn:hover {
-    transform: scale(1.03);
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-red);
+    transition: 0.3s ease;
 }
 
-/* Gambar */
-.btn-image {
-    width: 120px;
-    height: auto;
-    display: block;
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--primary-red);
+    opacity: 1;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-    .floating-wrapper {
-        right: 10px;
-    }
-
-    .btn-image {
-        width: 100px;
-    }
-
-    .close-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 18px;
-        top: -6px;
-        right: -6px;
-    }
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
 }
 
-.floating-wrapper {
-    animation: floatAnim 3s ease-in-out infinite;
+/* ==========================================
+   FIX SAAT NAVBAR SCROLL
+========================================== */
+
+/* semua menu kembali putih */
+header.scrolled .nav-menu a {
+    color: #ffffff;
 }
 
-@keyframes floatAnim {
-    0%   { transform: translateY(-50%) translateY(0); }
-    50%  { transform: translateY(-50%) translateY(-8px); }
-    100% { transform: translateY(-50%) translateY(0); }
+/* menu aktif tetap putih */
+header.scrolled .nav-menu a.active {
+    color: #ffffff;
 }
+
+/* hover saat navbar merah */
+header.scrolled .nav-menu a:hover {
+    color: #ffffff;
+}
+
+/* garis bawah berubah putih */
+header.scrolled .nav-menu a::after {
+    background: #ffffff;
+}
+
+
     </style>
 </head>
 
@@ -1544,9 +1986,15 @@ header.scrolled {
     <!-- Header / Navbar -->
     <header>
         <div class="nav-table">
-            <div class="nav-logo-cell">
-                <a href="#" class="nav-logo">Brasil<span>.</span></a>
-            </div>
+          <div class="nav-logo-wrapper">
+
+    <a href="#" class="nav-logo">
+        Brasil<span>.</span>
+    </a>
+
+   
+
+</div>
             <div class="nav-menu-cell">
                 <nav class="nav-menu">
                     <a href="#home" class="active">Tentang Kami</a>
@@ -1570,8 +2018,20 @@ header.scrolled {
 
     <!-- Brand Badge -->
     <div class="brand-badge-container">
-        <div class="brand-badge">Brasil</div>
+
+    <div class="brand-badge">
+
+        <div class="brand-badge-logo">
+            Brasil
+        </div>
+
+        <div class="brand-badge-sub">
+            Es Krim & Es Puter
+        </div>
+
     </div>
+
+</div>
 
     <!-- Tentang Kami -->
     <section class="about">
@@ -1598,62 +2058,139 @@ header.scrolled {
 
     <!-- Varian Rasa - Slider -->
     <section id="produk" class="variants">
-        <h2 class="section-title">Varian Rasa</h2>
 
-        <!-- Slider bungkus -->
-        <div class="slider-wrap" aria-label="Slider Varian Rasa">
-            <!-- Track: gandakan set item untuk loop mulus -->
-            <div class="slider-track">
-                <!-- Set Asli -->
+    <!-- HEADER -->
+    <div class="variants-header">
+
+    
+
+        <h2 class="section-title">
+            VARIAN RASA
+        </h2>
+
+        <div class="section-line"></div>
+
+    </div>
+
+    <!-- SWIPER -->
+    <div class="swiper produkSwiper">
+
+        <div class="swiper-wrapper">
+
+            <!-- Duren -->
+            <div class="swiper-slide">
                 <div class="grid-card">
-                    <div class="card-img" style="background-image: url('{{ asset('assets/duren.png') }}');"></div>
+
+                   <div class="card-img"
+                        style="background-image:url('{{ asset('assets/coklat.png') }}');">
+                    </div>
+
+
                     <h3>Duren</h3>
-                </div>
-                <div class="grid-card">
-                    <div class="card-img" style="background-image: url('{{ asset('assets/coklat.png') }}');"></div>
-                    <h3>Coklat</h3>
-                </div>
-                <div class="grid-card">
-                    <div class="card-img" style="background-image: url('{{ asset('assets/kopi.png') }}');"></div>
-                    <h3>Kopi</h3>
-                </div>
-                <div class="grid-card">
-                    <div class="card-img" style="background-image: url('{{ asset('assets/sirsak.png') }}');"></div>
-                    <h3>Sirsak</h3>
-                </div>
-                <div class="grid-card">
-                    <div class="card-img" style="background-image: url('{{ asset('assets/duren.png') }}');"></div>
-                    <h3>Duren</h3>
-                </div>
 
+                   
 
-                <!-- Duplikat -->
-                <div class="grid-card">
-                    <div class="card-img"
-                        style="background-image:url('[images.unsplash.com](https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=600&auto=format&fit=crop)');">
-                    </div>
-                    <h3>Kelapa</h3>
-                </div>
-                <div class="grid-card">
-                    <div class="card-img"
-                        style="background-image:url('[images.unsplash.com](https://images.unsplash.com/photo-1534790566855-4cb788d389ec?q=80&w=600&auto=format&fit=crop)');">
-                    </div>
-                    <h3>Ketan</h3>
-                </div>
-                <div class="grid-card">
-                    <div class="card-img"
-                        style="background-image:url('[images.unsplash.com](https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop)');">
-                    </div>
-                    <h3>Kopi</h3>
-                </div>
-                <div class="grid-card">
-                    <div class="card-img"
-                        style="background-image:url('[images.unsplash.com](https://images.unsplash.com/photo-1553118211-167455d4081c?q=80&w=600&auto=format&fit=crop)');">
-                    </div>
-                    <h3>Rujak</h3>
                 </div>
             </div>
+
+            <!-- Coklat -->
+            <div class="swiper-slide">
+                <div class="grid-card">
+
+                    <div class="card-img"
+                        style="background-image:url('{{ asset('assets/coklat.png') }}');">
+                    </div>
+
+                    <h3>Coklat</h3>
+
+                    
+
+                </div>
+            </div>
+
+            <!-- Kopi -->
+            <div class="swiper-slide">
+                <div class="grid-card">
+
+                      <div class="card-img"
+                        style="background-image:url('{{ asset('assets/sirsak.png') }}');">
+                    </div>
+
+                    <h3>Kopi</h3>
+
+                   
+
+                </div>
+            </div>
+
+            <!-- Sirsak -->
+            <div class="swiper-slide">
+                <div class="grid-card">
+
+                    <div class="card-img"
+                        style="background-image:url('{{ asset('assets/sirsak.png') }}');">
+                    </div>
+
+                    <h3>Sirsak</h3>
+
+                   
+                </div>
+            </div>
+
+            <!-- Kelapa -->
+            <div class="swiper-slide">
+                <div class="grid-card">
+
+                    <div class="card-img"
+                        style="background-image:url('{{ asset('assets/sirsak.png') }}');">
+                    </div>
+
+                    <h3>Kelapa</h3>
+
+                    
+
+                </div>
+            </div>
+
+            <!-- Ketan -->
+            <div class="swiper-slide">
+                <div class="grid-card">
+
+                    <div class="card-img"
+                        style="background-image:url('{{ asset('assets/coklat.png') }}');">
+                    </div>
+
+                    <h3>Ketan</h3>
+
+                   
+
+                </div>
+            </div>
+
+            <!-- Rujak -->
+            <div class="swiper-slide">
+                <div class="grid-card">
+
+                      <div class="card-img"
+                        style="background-image:url('{{ asset('assets/duren.png') }}');">
+                    </div>
+
+                    <h3>Rujak</h3>
+
+                  
+
+                </div>
+            </div>
+
         </div>
+
+        
+        <!-- PAGINATION -->
+        <div class="produk-pagination swiper-pagination"></div>
+
+    </div>
+
+</section>
     </section>
 
     <!-- Tagline -->
@@ -1717,49 +2254,143 @@ header.scrolled {
         </div>
     </section>
 
-   <section id="mitra" class="partners-section">
-    <h2 class="section-title">MITRA KAMI</h2>
+   <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
-    <div class="partners-slider">
-        <div class="partners-track">
-            
-            <div class="mitra-card">
-                <div class="mitra-kotak-foto"><img src="assets/logo1.png" alt="Mitra 1" /></div>
-                <p>LuLu</p>
-            </div>
-            <div class="mitra-card">
-                <div class="mitra-kotak-foto"><img src="assets/logo2.png" alt="Mitra 2" /></div>
-                <p>Mang Engking</p>
-            </div>
-            <div class="mitra-card">
-                <div class="mitra-kotak-foto"><img src="assets/poto.png" alt="Mitra 3" /></div>
-                <p>NAGA Swalayan</p>
-            </div>
-            <div class="mitra-card">
-                <div class="mitra-kotak-foto"><img src="assets/logo1.png" alt="Mitra 4" /></div>
-                <p>Sindang Reret</p>
+<section id="mitra" class="partners-section">
+
+    <!-- HEADER -->
+    <div class="partners-header">
+
+        <div class="partners-icon">
+            🤝
+        </div>
+
+        <h2 class="section-title">
+            MITRA KAMI
+        </h2>
+
+        <div class="section-line"></div>
+
+    </div>
+
+    <!-- SWIPER -->
+    <div class="swiper partnersSwiper">
+
+        <div class="swiper-wrapper">
+
+            <!-- CARD 1 -->
+            <div class="swiper-slide">
+
+                <div class="mitra-card">
+
+                    <div class="mitra-kotak-foto">
+                        <img src="assets/logo1.png" alt="LuLu">
+                    </div>
+
+                    <h3>LuLu</h3>
+
+                   
+
+                </div>
+
             </div>
 
-            <div class="mitra-card">
-                <div class="mitra-kotak-foto"><img src="assets/logo1.png" alt="Mitra 1" /></div>
-                <p>LuLu</p>
+            <!-- CARD 2 -->
+            <div class="swiper-slide">
+
+                <div class="mitra-card">
+
+                    <div class="mitra-kotak-foto">
+                        <img src="assets/logo2.png" alt="Mang Engking">
+                    </div>
+
+                    <h3>Mang Engking</h3>
+
+                   
+
+                </div>
+
             </div>
-            <div class="mitra-card">
-                <div class="mitra-kotak-foto"><img src="assets/logo2.png" alt="Mitra 2" /></div>
-                <p>Mang Engking</p>
+
+            <!-- CARD 3 -->
+            <div class="swiper-slide">
+
+                <div class="mitra-card">
+
+                    <div class="mitra-kotak-foto">
+                        <img src="assets/logo2.png" alt="NAGA Swalayan">
+                    </div>
+
+                    <h3>NAGA Swalayan</h3>
+
+                    
+
+                </div>
+
             </div>
-            <div class="mitra-card">
-                <div class="mitra-kotak-foto"><img src="assets/poto.png" alt="Mitra 3" /></div>
-                <p>NAGA Swalayan</p>
+
+            <!-- CARD 4 -->
+            <div class="swiper-slide">
+
+                <div class="mitra-card">
+
+                    <div class="mitra-kotak-foto">
+                        <img src="assets/logo1.png" alt="Sindang Reret">
+                    </div>
+
+                    <h3>Sindang Reret</h3>
+
+                   
+
+                </div>
+
             </div>
-            <div class="mitra-card">
-                <div class="mitra-kotak-foto"><img src="assets/logo1.png" alt="Mitra 4" /></div>
-                <p>Sindang Reret</p>
+
+            <!-- DUPLIKAT UNTUK LOOP -->
+            <div class="swiper-slide">
+
+                <div class="mitra-card">
+
+                    <div class="mitra-kotak-foto">
+                        <img src="assets/logo1.png" alt="LuLu">
+                    </div>
+
+                    <h3>LuLu</h3>
+
+                    
+
+                </div>
+
+            </div>
+
+            <div class="swiper-slide">
+
+                <div class="mitra-card">
+
+                    <div class="mitra-kotak-foto">
+                        <img src="assets/logo2.png" alt="Mang Engking">
+                    </div>
+
+                    <h3>Mang Engking</h3>
+
+                    
+
+                </div>
+
             </div>
 
         </div>
+
+        <!-- BUTTON -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- DOT -->
+        <div class="swiper-pagination"></div>
+
     </div>
-</section>
+
 </section>
     <!-- CTA / Lowongan Kerja -->
     <section id="lowongan" class="job-vacancy-section">
@@ -1909,29 +2540,7 @@ header.scrolled {
 </div>
 
 <!-- Struktur HTML -->
-<div id="floating-wrapper" class="floating-wrapper">
-    
-    <!-- Tombol Close -->
-    <button
-        id="close-btn"
-        class="close-btn"
-        onclick="closeButton()"
-        aria-label="Tutup"
-    >
-        ×
-    </button>
 
-    <!-- Tombol Gambar Utama -->
-    <a href="https://link-tiket-anda.com"
-       class="floating-btn"
-       target="_blank">
-
-        <img src="{{ asset('assets/2.png') }}"
-             alt="Es Brasil"
-             class="btn-image">
-    </a>
-
-</div>
     </section>
 
     <!-- Footer -->
@@ -1940,123 +2549,253 @@ header.scrolled {
     </footer>
 
    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <script>
-    /**
-     * 1. Inisialisasi Fitur Halaman
-     */
-    document.addEventListener('DOMContentLoaded', () => {
-        // Inisialisasi Slider Promo
-        new Swiper('.promo-swiper', {
-            loop: true,
-            navigation: { 
-                nextEl: '.swiper-button-next', 
-                prevEl: '.swiper-button-prev' 
-            },
-        });
+/* ==========================================
+   INISIALISASI HALAMAN
+========================================== */
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* ==========================
+       SWIPER PROMO
+    ========================== */
+    const promoSwiper = new Swiper('.promo-swiper', {
+        loop: true,
+        slidesPerView: 1,
+
+        navigation: {
+            nextEl: '.promo-next',
+            prevEl: '.promo-prev'
+        }
     });
 
-    // Munculkan promo otomatis saat halaman selesai dimuat
-    window.onload = () => {
-        const promoModal = document.getElementById('promo-modal');
-        if (promoModal) promoModal.classList.remove('hidden');
-    };
 
-    /**
-     * 2. Fungsi Chatbot
-     */
+    /* ==========================
+       SWIPER MITRA
+    ========================== */
+    const partnersSwiper = new Swiper('.partnersSwiper', {
+        slidesPerView: 5,
+        spaceBetween: 25,
+        loop: true,
 
-    // Membuka/menutup jendela chat
-    function toggleChat() {
-        const chatWindow = document.getElementById('chat-window');
-        if (chatWindow) chatWindow.classList.toggle('hidden');
-    }
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+        },
 
-    // Menangani klik tombol pilihan (Produk/Lokasi)
-    function handleOption(option) {
-        const input = document.getElementById('chat-input');
-        if (input) {
-            input.value = option;
-            sendMessage();
-        }
-    }
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
 
-    // Mengirim pesan
-    function sendMessage() {
-        const input = document.getElementById('chat-input');
-        const text = input.value.trim();
-        
-        if (text === "") return;
+        navigation: {
+            nextEl: '.partners-next',
+            prevEl: '.partners-prev'
+        },
 
-        addMessage(text, 'user');
-        input.value = "";
-
-        setTimeout(() => {
-            let response = "Maaf, saya tidak mengerti. Coba pilih Produk atau Lokasi.";
-            const lowerText = text.toLowerCase();
-            
-            if (lowerText.includes('produk')) {
-                response = "Varian kami ada: Duren, Coklat, Kopi, dan Sirsak!";
-            } else if (lowerText.includes('lokasi')) {
-                response = "Kami tersedia di berbagai swalayan terdekat!";
+        breakpoints: {
+            320: {
+                slidesPerView: 1
+            },
+            576: {
+                slidesPerView: 2
+            },
+            768: {
+                slidesPerView: 3
+            },
+            1200: {
+                slidesPerView: 5
             }
-            
-            addMessage(response, 'bot');
-        }, 500);
-    }
+        }
+    });
 
-    // Menambahkan pesan ke tampilan
-    function addMessage(text, sender) {
-        const body = document.querySelector('.chat-body');
-        if (!body) return;
 
-        const msg = document.createElement('div');
-        msg.className = `chat-message ${sender}`;
-        msg.innerHTML = `<p>${text}</p>`;
-        
-        body.appendChild(msg);
-        body.scrollTop = body.scrollHeight;
-    }
-
-    // Menutup Modal Promo
-    function closePromo() {
-        const promoModal = document.getElementById('promo-modal');
-        if (promoModal) promoModal.classList.add('hidden');
-    }
-
-    /**
-     * 3. Global Event Listeners
-     */
-
-    // Kirim pesan dengan Enter
+    /* ==========================
+       ENTER CHAT
+    ========================== */
     const chatInput = document.getElementById('chat-input');
+
     if (chatInput) {
         chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
         });
     }
-
-    // Efek scroll pada header
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (header) {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        }
-    });
-
-    new Swiper('.promo-swiper', {
-    loop: true,
-    slidesPerView: 1, // Memastikan hanya 1 gambar yang tampil per slide
-    navigation: { 
-        nextEl: '.swiper-button-next', 
-        prevEl: '.swiper-button-prev' 
-    },
 });
 
-function closeButton() {
-        document.getElementById('floating-wrapper').style.display = 'none';
+
+/* ==========================================
+   PROMO MODAL
+========================================== */
+window.onload = () => {
+    const promoModal = document.getElementById('promo-modal');
+
+    if (promoModal) {
+        promoModal.classList.remove('hidden');
     }
+};
+
+function closePromo() {
+    const promoModal = document.getElementById('promo-modal');
+
+    if (promoModal) {
+        promoModal.classList.add('hidden');
+    }
+}
 
 
+/* ==========================================
+   CHATBOT
+========================================== */
+function toggleChat() {
+    const chatWindow = document.getElementById('chat-window');
+
+    if (chatWindow) {
+        chatWindow.classList.toggle('hidden');
+    }
+}
+
+function handleOption(option) {
+    const input = document.getElementById('chat-input');
+
+    if (input) {
+        input.value = option;
+        sendMessage();
+    }
+}
+
+function sendMessage() {
+    const input = document.getElementById('chat-input');
+
+    if (!input) return;
+
+    const text = input.value.trim();
+
+    if (text === '') return;
+
+    addMessage(text, 'user');
+    input.value = '';
+
+    setTimeout(() => {
+
+        let response =
+            'Maaf, saya tidak mengerti. Coba pilih Produk atau Lokasi.';
+
+        const lowerText = text.toLowerCase();
+
+        if (lowerText.includes('produk')) {
+            response =
+                'Varian kami ada: Duren, Coklat, Kopi, dan Sirsak!';
+        }
+        else if (lowerText.includes('lokasi')) {
+            response =
+                'Kami tersedia di berbagai swalayan terdekat!';
+        }
+
+        addMessage(response, 'bot');
+
+    }, 500);
+}
+
+function addMessage(text, sender) {
+    const body = document.querySelector('.chat-body');
+
+    if (!body) return;
+
+    const msg = document.createElement('div');
+
+    msg.className = `chat-message ${sender}`;
+    msg.innerHTML = `<p>${text}</p>`;
+
+    body.appendChild(msg);
+    body.scrollTop = body.scrollHeight;
+}
+
+
+/* ==========================================
+   HEADER SCROLL EFFECT
+========================================== */
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+
+    if (header) {
+        header.classList.toggle(
+            'scrolled',
+            window.scrollY > 50
+        );
+    }
+});
+
+
+/* ==========================================
+   FLOATING BUTTON
+========================================== */
+function closeButton() {
+    const floating =
+        document.getElementById('floating-wrapper');
+
+    if (floating) {
+        floating.style.display = 'none';
+    }
+}
+
+const produkSwiper = new Swiper('.produkSwiper', {
+
+    slidesPerView: 4,
+    spaceBetween: 40,
+    loop: true,
+
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+    },
+
+    navigation: {
+        nextEl: '.produk-next',
+        prevEl: '.produk-prev',
+    },
+
+    pagination: {
+        el: '.produk-pagination',
+        clickable: true,
+    },
+
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+        },
+
+        576: {
+            slidesPerView: 2,
+        },
+
+        768: {
+            slidesPerView: 3,
+        },
+
+        1200: {
+            slidesPerView: 4,
+        }
+    }
+});
+
+document.querySelectorAll('.nav-menu a').forEach(link => {
+
+    link.addEventListener('click', function() {
+
+        // hapus active dari semua menu
+        document.querySelectorAll('.nav-menu a')
+            .forEach(item => item.classList.remove('active'));
+
+        // aktifkan menu yang diklik
+        this.classList.add('active');
+    });
+
+});
 </script>
+
 </body>
 </html>
