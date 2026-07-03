@@ -1452,6 +1452,90 @@ header.scrolled {
     display: block; /* Penting agar tidak ada celah di bawah gambar */
     object-fit: contain; /* Agar gambar tidak terpotong */
 }
+
+
+  /* Styling CSS */
+  /* Container tombol yang melayang */
+/* Container utama */
+.floating-wrapper {
+    position: fixed;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    z-index: 9999;
+    display: inline-block;
+}
+
+/* Tombol close */
+.close-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: #ff4d4d;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+    background: #ff3333;
+}
+
+/* Tombol gambar */
+.floating-btn {
+    display: block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.floating-btn:hover {
+    transform: scale(1.03);
+}
+
+/* Gambar */
+.btn-image {
+    width: 120px;
+    height: auto;
+    display: block;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .floating-wrapper {
+        right: 10px;
+    }
+
+    .btn-image {
+        width: 100px;
+    }
+
+    .close-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+        top: -6px;
+        right: -6px;
+    }
+}
+
+.floating-wrapper {
+    animation: floatAnim 3s ease-in-out infinite;
+}
+
+@keyframes floatAnim {
+    0%   { transform: translateY(-50%) translateY(0); }
+    50%  { transform: translateY(-50%) translateY(-8px); }
+    100% { transform: translateY(-50%) translateY(0); }
+}
     </style>
 </head>
 
@@ -1823,6 +1907,31 @@ header.scrolled {
     </div> <!-- Penutup promo-content -->
 </div> <!-- Penutup promo-overlay -->
 </div>
+
+<!-- Struktur HTML -->
+<div id="floating-wrapper" class="floating-wrapper">
+    
+    <!-- Tombol Close -->
+    <button
+        id="close-btn"
+        class="close-btn"
+        onclick="closeButton()"
+        aria-label="Tutup"
+    >
+        ×
+    </button>
+
+    <!-- Tombol Gambar Utama -->
+    <a href="https://link-tiket-anda.com"
+       class="floating-btn"
+       target="_blank">
+
+        <img src="{{ asset('assets/2.png') }}"
+             alt="Es Brasil"
+             class="btn-image">
+    </a>
+
+</div>
     </section>
 
     <!-- Footer -->
@@ -1942,6 +2051,12 @@ header.scrolled {
         prevEl: '.swiper-button-prev' 
     },
 });
+
+function closeButton() {
+        document.getElementById('floating-wrapper').style.display = 'none';
+    }
+
+
 </script>
 </body>
 </html>
