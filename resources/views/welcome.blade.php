@@ -2410,10 +2410,11 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
                 </h2>
 
 
-                <a href="#" class="job-vacancy-btn">
-                    Selengkapnya
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
+               <!-- Menggunakan url() agar diarahkan ke rute /loker/helper -->
+<a href="{{ url('/loker/helper') }}" class="job-vacancy-btn">
+    Selengkapnya
+    <i class="fa-solid fa-arrow-right"></i>
+</a>
 
             </div>
 
@@ -2530,11 +2531,7 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
                 <div class="swiper-slide">
                     <img src="{{ asset('assets/promo2.png') }}" alt="Promo 2">
                 </div>
-            </div>
-            <!-- Navigasi -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
+            
     </div> <!-- Penutup promo-content -->
 </div> <!-- Penutup promo-overlay -->
 </div>
