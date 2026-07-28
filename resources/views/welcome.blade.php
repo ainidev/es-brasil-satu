@@ -2411,7 +2411,7 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
 
                <!-- Menggunakan url() agar diarahkan ke rute /loker/helper -->
-<a href="{{ url('/loker/helper') }}" class="job-vacancy-btn">
+<a href="{{ url('loker') }}" class="job-vacancy-btn">
     Selengkapnya
     <i class="fa-solid fa-arrow-right"></i>
 </a>
