@@ -7,6 +7,13 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\StoreController; 
+
+// --- 1. IMPORT MODEL YANG DIBUTUHKAN UNTUK LANDING PAGE ---
+use App\Models\About;
+use App\Models\Partner;
+use App\Models\Store;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +21,15 @@ use App\Http\Controllers\AboutController;
 |--------------------------------------------------------------------------
 */
 
-// --- 1. HALAMAN UTAMA / LANDING PAGE ---
+// --- 1. HALAMAN UTAMA / LANDING PAGE (UPDATE DATA DINAMIS) ---
 Route::get('/', function () {
-    return view('welcome'); // Halaman utama website
+    // Ambil data dari database
+    $about = About::first();
+    $partners = Partner::all();
+    $store = Store::first();
+
+    // Kirimkan data $about, $partners, dan $store ke halaman welcome
+    return view('welcome', compact('about', 'partners', 'store'));
 })->name('home');
 
 
@@ -41,35 +54,44 @@ Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 
-// --- 4. AKSES LOGIN & DASHBOARD ADMIN ---
+// --- 4. AKSES LOGIN & LOGOUT ADMIN ---
 Route::get('/admin/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/admin/login', [AuthController::class, 'login']);
 Route::post('/admin/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Kelola Tentang Kami
-Route::get('/admin/about', [AboutController::class, 'edit'])->name('admin.about.edit');
-Route::put('/admin/about', [AboutController::class, 'update'])->name('admin.about.update');
 
-
-// --- 5. HALAMAN TERPROTEKSI (HARUS LOGIN DULU) ---
+// --- 5. HALAMAN ADMIN & TERPROTEKSI (HARUS LOGIN) ---
 Route::middleware(['auth'])->group(function () {
-    // Dashboard User / Admin
+
+    // Dashboard User Biasa (jika ada)
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['verified'])->name('dashboard');
-
-    // Dashboard Pengelolaan Admin
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-
-    // CRUD Pengelolaan Produk (Varian Rasa)
-    Route::resource('admin/products', ProductController::class, [
-        'names' => 'admin.products'
-    ]);
 
     // Pengelolaan Profil User/Admin
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-// require __DIR__.'/auth.php';
+    // --- GRUP ROUTE KHUSUS ADMIN ---
+    Route::prefix('admin')->name('admin.')->group(function () {
+        
+        // Dashboard Admin
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+
+        // Kelola Tentang Kami
+        Route::get('/about', [AboutController::class, 'edit'])->name('about.edit');
+        Route::put('/about', [AboutController::class, 'update'])->name('about.update');
+
+        // Kelola Profil Toko 
+        Route::get('/store', [StoreController::class, 'index'])->name('store.index');
+        Route::put('/store', [StoreController::class, 'update'])->name('store.update');
+        
+        // Kelola Produk / Varian
+        Route::resource('products', ProductController::class);
+
+        // Kelola Mitra Kami
+        Route::resource('partners', PartnerController::class)->except(['create', 'show', 'edit']);
+    });
+
+});

@@ -47,13 +47,13 @@
                     </a>
 
                     <!-- Informasi Toko -->
-                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
+                    <a href="{{ route('admin.store.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
                         <i data-lucide="store" class="w-5 h-5"></i>
                         <span>Profil Toko</span>
                     </a>
 
                     <!-- Mitra Kami -->
-                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
+                    <a href="{{ route('admin.partners.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
                         <i data-lucide="handshake" class="w-5 h-5"></i>
                         <span>Mitra Kami</span>
                     </a>

@@ -2033,29 +2033,31 @@ header.scrolled .nav-menu a::after {
 
 </div>
 
-    <!-- Tentang Kami -->
+  <!-- Tentang Kami (Dinamis dari Admin) -->
+    @if(isset($about) && $about)
     <section class="about">
         <div class="about-layout">
             <div class="about-text">
-                <h2>Tentang Kami</h2>
-                <p>
-                    Produk rumahan yang merupakan usaha keluarga dan berasal dari Purwokerto.
-                    Produk ini awalnya yakni <span class="highlight">Es Mambo</span> atau sejenis Es Lilin
-                    yang dijajakan keliling. Rasa pertama yang dibuat adalah Kacang Hijau.
-                    Hingga saat ini sudah ada <span class="highlight">9 Varian Rasa</span> yang siap menyegarkan harimu.
+                <h2>{{ $about->title }}</h2>
+                <p style="white-space: pre-line;">
+                    {{ $about->content }}
                 </p>
             </div>
 
             <div class="about-img-box">
-                <div class="slider-container">
-                    <div class="slide"><img src="/assets/logo1.png" alt="Es Brasil 1" /></div>
-                    <div class="slide"><img src="/assets/logo2.png" alt="Es Brasil 2" /></div>
-                    <div class="slide"><img src="/assets/logo3.png" alt="Es Brasil 3" /></div>
-                </div>
+                @if($about->image)
+                    <img src="{{ asset('storage/' . $about->image) }}" alt="{{ $about->title }}" style="width: 100%; height: auto; border-radius: 12px; object-fit: cover;">
+                @else
+                    <div class="slider-container">
+                        <div class="slide"><img src="{{ asset('assets/logo1.png') }}" alt="Es Brasil 1" /></div>
+                        <div class="slide"><img src="{{ asset('assets/logo2.png') }}" alt="Es Brasil 2" /></div>
+                        <div class="slide"><img src="{{ asset('assets/logo3.png') }}" alt="Es Brasil 3" /></div>
+                    </div>
+                @endif
             </div>
         </div>
     </section>
-
+    @endif
     <!-- Varian Rasa - Slider -->
     <section id="produk" class="variants">
 
