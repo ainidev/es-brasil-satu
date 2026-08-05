@@ -238,7 +238,7 @@ header.scrolled .nav-logo-sub{
     margin: 0 auto;
 }
 
-/* Badge Brand */
+
        /* ==========================================
    BRAND BADGE PREMIUM
 ========================================== */
@@ -408,7 +408,7 @@ header.scrolled .nav-logo-sub{
         }
 
        
-       /* Varian Rasa - Banner Merah (Dibuat Lebih Besar & Luas) */
+       
 /* ==========================================
    SECTION VARIAN RASA
 ========================================== */
@@ -605,11 +605,6 @@ header.scrolled .nav-logo-sub{
     text-transform: uppercase;
     margin-right: 5px;
 }
-         
-        /* ==========================================
-   SECTION "TERSEDIA DI TOKO"
-   ========================================== */
-
   /* ==========================================
    SECTION TERSEDIA DI TOKO
 ========================================== */
@@ -753,7 +748,6 @@ header.scrolled .nav-logo-sub{
     }
 }
 
-/* --- SECTION MITRA KAMI (DIPERBARUI) --- */
 /* ==========================================
    MITRA KAMI - PREMIUM VERSION
    ========================================== */
@@ -907,30 +901,27 @@ FOTO
 =========================== */
 
 .mitra-kotak-foto{
-    width:120px;
-    height:120px;
-
-    border-radius:50%;
-
-    background:#f7f7f7;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    margin-bottom:25px;
-
-    transition:.3s;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: .3s;
+    overflow: hidden; /* Tambahkan ini agar foto tidak meluber keluar lingkaran */
 }
 
 .mitra-card:hover .mitra-kotak-foto{
-    transform:scale(1.08);
+    transform: scale(1.08);
 }
 
 .mitra-kotak-foto img{
-    width:75%;
-    height:75%;
-    object-fit:contain;
+    width: 100%;           /* Dari 75% diubah jadi 100% agar memenuhi wadah */
+    height: 100%;          /* Dari 75% diubah jadi 100% */
+    object-fit: cover;     /* Dari contain diubah jadi cover agar foto ter-crop bulat sempurna */
+    border-radius: 50%;    /* Memastikan gambarnya terpotong bundar */
 }
 
 /* ===========================
@@ -2034,166 +2025,116 @@ header.scrolled .nav-menu a::after {
 </div>
 
   <!-- Tentang Kami (Dinamis dari Admin) -->
-    @if(isset($about) && $about)
-    <section class="about">
-        <div class="about-layout">
-            <div class="about-text">
-                <h2>{{ $about->title }}</h2>
-                <p style="white-space: pre-line;">
-                    {{ $about->content }}
-                </p>
-            </div>
-
-            <div class="about-img-box">
-                @if($about->image)
-                    <img src="{{ asset('storage/' . $about->image) }}" alt="{{ $about->title }}" style="width: 100%; height: auto; border-radius: 12px; object-fit: cover;">
-                @else
-                    <div class="slider-container">
-                        <div class="slide"><img src="{{ asset('assets/logo1.png') }}" alt="Es Brasil 1" /></div>
-                        <div class="slide"><img src="{{ asset('assets/logo2.png') }}" alt="Es Brasil 2" /></div>
-                        <div class="slide"><img src="{{ asset('assets/logo3.png') }}" alt="Es Brasil 3" /></div>
-                    </div>
-                @endif
-            </div>
+@if(isset($about) && $about)
+<section class="about">
+    <div class="about-layout">
+        <div class="about-text">
+            <h2>{{ $about->title }}</h2>
+            <p style="white-space: pre-line;">
+                {{ $about->content }}
+            </p>
         </div>
-    </section>
-    @endif
-    <!-- Varian Rasa - Slider -->
-    <section id="produk" class="variants">
+
+        {{-- Pembungkus utama foto dengan border-radius besar & overflow hidden --}}
+        <div class="about-img-box" style="border-radius: 28px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.12);">
+            
+            {{-- 1. Jika Admin Upload Banyak Foto (Array) --}}
+            @if(!empty($about->images) && is_array($about->images))
+                <div class="slider-container" style="border-radius: 28px; overflow: hidden;">
+                    @foreach($about->images as $img)
+                        <div class="slide" style="border-radius: 28px; overflow: hidden;">
+                            <img src="{{ asset('storage/' . $img) }}" 
+                                 alt="{{ $about->title }}" 
+                                 style="width: 100%; max-height: 400px; border-radius: 28px; object-fit: cover; display: block;">
+                        </div>
+                    @endforeach
+                </div>
+
+            {{-- 2. Jika Admin Upload 1 Foto --}}
+            @elseif($about->image)
+                <img src="{{ asset('storage/' . $about->image) }}" 
+                     alt="{{ $about->title }}" 
+                     style="width: 100%; max-height: 400px; border-radius: 28px; object-fit: cover; display: block;">
+
+            {{-- 3. Jika Belum Ada Foto Sama Sekali (Pakai Slider Default) --}}
+            @else
+                <div class="slider-container" style="border-radius: 28px; overflow: hidden;">
+                    <div class="slide"><img src="{{ asset('assets/logo1.png') }}" alt="Es Brasil 1" style="width: 100%; border-radius: 28px; display: block;" /></div>
+                    <div class="slide"><img src="{{ asset('assets/logo2.png') }}" alt="Es Brasil 2" style="width: 100%; border-radius: 28px; display: block;" /></div>
+                    <div class="slide"><img src="{{ asset('assets/logo3.png') }}" alt="Es Brasil 3" style="width: 100%; border-radius: 28px; display: block;" /></div>
+                </div>
+            @endif
+
+        </div>
+    </div>
+</section>
+@endif
+
+   <!-- Varian Rasa - Slider (Dinamis dari Admin) -->
+<section id="produk" class="variants">
 
     <!-- HEADER -->
     <div class="variants-header">
-
-    
-
         <h2 class="section-title">
             VARIAN RASA
         </h2>
-
         <div class="section-line"></div>
-
     </div>
 
     <!-- SWIPER -->
     <div class="swiper produkSwiper">
-
         <div class="swiper-wrapper">
 
-            <!-- Duren -->
-            <div class="swiper-slide">
-                <div class="grid-card">
+            {{-- Ambil data varian rasa dari database --}}
+            @forelse($products as $product)
+                <div class="swiper-slide">
+                    <div class="grid-card">
+                        
+                        {{-- Cek Foto dari Admin / Storage --}}
+                        @if($product->image)
+                            <div class="card-img" style="background-image: url('{{ asset('storage/' . $product->image) }}');"></div>
+                        @else
+                            <div class="card-img" style="background-image: url('{{ asset('assets/coklat.png') }}');"></div>
+                        @endif
 
-                   <div class="card-img"
-                        style="background-image:url('{{ asset('assets/coklat.png') }}');">
+                        <h3>{{ $product->name }}</h3>
+
+                        {{-- Jika ada deskripsi singkat atau harga dari admin --}}
+                        @if(isset($product->price))
+                            <p class="price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                        @endif
+
                     </div>
-
-
-                    <h3>Duren</h3>
-
-                   
-
                 </div>
-            </div>
-
-            <!-- Coklat -->
-            <div class="swiper-slide">
-                <div class="grid-card">
-
-                    <div class="card-img"
-                        style="background-image:url('{{ asset('assets/coklat.png') }}');">
+            @empty
+                {{-- Tampilan Default jika belum ada data di Database Admin --}}
+                <div class="swiper-slide">
+                    <div class="grid-card">
+                        <div class="card-img" style="background-image:url('{{ asset('assets/coklat.png') }}');"></div>
+                        <h3>Coklat</h3>
                     </div>
-
-                    <h3>Coklat</h3>
-
-                    
-
                 </div>
-            </div>
-
-            <!-- Kopi -->
-            <div class="swiper-slide">
-                <div class="grid-card">
-
-                      <div class="card-img"
-                        style="background-image:url('{{ asset('assets/sirsak.png') }}');">
+                <div class="swiper-slide">
+                    <div class="grid-card">
+                        <div class="card-img" style="background-image:url('{{ asset('assets/duren.png') }}');"></div>
+                        <h3>Duren</h3>
                     </div>
-
-                    <h3>Kopi</h3>
-
-                   
-
                 </div>
-            </div>
-
-            <!-- Sirsak -->
-            <div class="swiper-slide">
-                <div class="grid-card">
-
-                    <div class="card-img"
-                        style="background-image:url('{{ asset('assets/sirsak.png') }}');">
+                <div class="swiper-slide">
+                    <div class="grid-card">
+                        <div class="card-img" style="background-image:url('{{ asset('assets/sirsak.png') }}');"></div>
+                        <h3>Sirsak</h3>
                     </div>
-
-                    <h3>Sirsak</h3>
-
-                   
                 </div>
-            </div>
-
-            <!-- Kelapa -->
-            <div class="swiper-slide">
-                <div class="grid-card">
-
-                    <div class="card-img"
-                        style="background-image:url('{{ asset('assets/sirsak.png') }}');">
-                    </div>
-
-                    <h3>Kelapa</h3>
-
-                    
-
-                </div>
-            </div>
-
-            <!-- Ketan -->
-            <div class="swiper-slide">
-                <div class="grid-card">
-
-                    <div class="card-img"
-                        style="background-image:url('{{ asset('assets/coklat.png') }}');">
-                    </div>
-
-                    <h3>Ketan</h3>
-
-                   
-
-                </div>
-            </div>
-
-            <!-- Rujak -->
-            <div class="swiper-slide">
-                <div class="grid-card">
-
-                      <div class="card-img"
-                        style="background-image:url('{{ asset('assets/duren.png') }}');">
-                    </div>
-
-                    <h3>Rujak</h3>
-
-                  
-
-                </div>
-            </div>
+            @endforelse
 
         </div>
 
-        
         <!-- PAGINATION -->
         <div class="produk-pagination swiper-pagination"></div>
-
     </div>
 
 </section>
-    </section>
 
     <!-- Tagline -->
     <div class="tagline-wrapper">
@@ -2256,139 +2197,52 @@ header.scrolled .nav-menu a::after {
         </div>
     </section>
 
-   <link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<!-- CDN Swiper (jika belum ditaruh di <head>) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
+<!-- SECTION MITRA KAMI -->
 <section id="mitra" class="partners-section">
 
     <!-- HEADER -->
     <div class="partners-header">
-
-        <div class="partners-icon">
-            🤝
-        </div>
-
-        <h2 class="section-title">
-            MITRA KAMI
-        </h2>
-
+        <div class="partners-icon">🤝</div>
+        <h2 class="section-title">MITRA KAMI</h2>
         <div class="section-line"></div>
-
     </div>
 
     <!-- SWIPER -->
     <div class="swiper partnersSwiper">
-
         <div class="swiper-wrapper">
 
-            <!-- CARD 1 -->
-            <div class="swiper-slide">
-
-                <div class="mitra-card">
-
-                    <div class="mitra-kotak-foto">
-                        <img src="assets/logo1.png" alt="LuLu">
-                    </div>
-
-                    <h3>LuLu</h3>
-
-                   
-
-                </div>
-
+           @forelse($partners as $partner)
+    <div class="swiper-slide">
+        <div class="mitra-card">
+            <div class="mitra-kotak-foto">
+                {{-- Ubah $partner->logo menjadi $partner->image --}}
+                <img src="{{ $partner->image ? asset('storage/' . $partner->image) : asset('assets/logo1.png') }}" alt="{{ $partner->name }}">
             </div>
-
-            <!-- CARD 2 -->
-            <div class="swiper-slide">
-
-                <div class="mitra-card">
-
-                    <div class="mitra-kotak-foto">
-                        <img src="assets/logo2.png" alt="Mang Engking">
-                    </div>
-
-                    <h3>Mang Engking</h3>
-
-                   
-
-                </div>
-
+            <h3>{{ $partner->name }}</h3>
+        </div>
+    </div>
+@empty
+    {{-- Fallback jika data kosong --}}
+    <div class="swiper-slide">
+        <div class="mitra-card">
+            <div class="mitra-kotak-foto">
+                <img src="{{ asset('assets/logo1.png') }}" alt="LuLu">
             </div>
-
-            <!-- CARD 3 -->
-            <div class="swiper-slide">
-
-                <div class="mitra-card">
-
-                    <div class="mitra-kotak-foto">
-                        <img src="assets/logo2.png" alt="NAGA Swalayan">
-                    </div>
-
-                    <h3>NAGA Swalayan</h3>
-
-                    
-
-                </div>
-
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="swiper-slide">
-
-                <div class="mitra-card">
-
-                    <div class="mitra-kotak-foto">
-                        <img src="assets/logo1.png" alt="Sindang Reret">
-                    </div>
-
-                    <h3>Sindang Reret</h3>
-
-                   
-
-                </div>
-
-            </div>
-
-            <!-- DUPLIKAT UNTUK LOOP -->
-            <div class="swiper-slide">
-
-                <div class="mitra-card">
-
-                    <div class="mitra-kotak-foto">
-                        <img src="assets/logo1.png" alt="LuLu">
-                    </div>
-
-                    <h3>LuLu</h3>
-
-                    
-
-                </div>
-
-            </div>
-
-            <div class="swiper-slide">
-
-                <div class="mitra-card">
-
-                    <div class="mitra-kotak-foto">
-                        <img src="assets/logo2.png" alt="Mang Engking">
-                    </div>
-
-                    <h3>Mang Engking</h3>
-
-                    
-
-                </div>
-
-            </div>
+            <h3>LuLu</h3>
+        </div>
+    </div>
+@endforelse
 
         </div>
 
-        <!-- BUTTON -->
+        <!-- BUTTON NAVIGATION -->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
 
-        <!-- DOT -->
+        <!-- PAGINATION DOTS -->
         <div class="swiper-pagination"></div>
 
     </div>
@@ -2519,24 +2373,7 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     </div>
 </div>
 
-<!-- Modal Background -->
-<div id="promo-modal" class="promo-overlay">
-    <div class="promo-content">
-        <button class="close-modal" onclick="closePromo()">×</button>
-        
-        <!-- Swiper Slider -->
-        <div class="swiper promo-swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="{{ asset('assets/promo1.png') }}" alt="Promo 1">
-                </div>
-                <div class="swiper-slide">
-                    <img src="{{ asset('assets/promo2.png') }}" alt="Promo 2">
-                </div>
-            
-    </div> <!-- Penutup promo-content -->
-</div> <!-- Penutup promo-overlay -->
-</div>
+<
 
 <!-- Struktur HTML -->
 
@@ -2547,7 +2384,9 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
         <p>&copy; 2026 Es Brasil. All Rights Reserved.</p>
     </footer>
 
-   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  @include('partials.promo-modal')
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
 /* ==========================================

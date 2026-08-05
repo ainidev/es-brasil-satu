@@ -9,11 +9,15 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\StoreController; 
+use App\Http\Controllers\Admin\AvailableStoreController; 
+use App\Http\Controllers\Admin\PromoController;
 
-// --- 1. IMPORT MODEL YANG DIBUTUHKAN UNTUK LANDING PAGE ---
+// --- IMPORT MODEL YANG DIBUTUHKAN UNTUK LANDING PAGE ---
 use App\Models\About;
 use App\Models\Partner;
 use App\Models\Store;
+use App\Models\Product;
+use App\Models\Promo;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +27,14 @@ use App\Models\Store;
 
 // --- 1. HALAMAN UTAMA / LANDING PAGE (UPDATE DATA DINAMIS) ---
 Route::get('/', function () {
-    // Ambil data dari database
-    $about = About::first();
+    $about    = About::first();
     $partners = Partner::all();
-    $store = Store::first();
+    $store    = Store::first();   // Untuk fallback jika cuma 1 toko
+    $stores   = Store::all();     // Untuk loop banyak toko
+    $products = Product::all();
+    $promo    = Promo::where('is_active', true)->latest()->first(); // Ambil promo aktif terbaru
 
-    // Kirimkan data $about, $partners, dan $store ke halaman welcome
-    return view('welcome', compact('about', 'partners', 'store'));
+    return view('welcome', compact('about', 'partners', 'store', 'stores', 'products', 'promo'));
 })->name('home');
 
 
@@ -83,15 +88,20 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/about', [AboutController::class, 'edit'])->name('about.edit');
         Route::put('/about', [AboutController::class, 'update'])->name('about.update');
 
-        // Kelola Profil Toko 
-        Route::get('/store', [StoreController::class, 'index'])->name('store.index');
-        Route::put('/store', [StoreController::class, 'update'])->name('store.update');
+        // Kelola Toko / Cabang (CRUD Penuh)
+        Route::resource('store', StoreController::class)->except(['create', 'show', 'edit']);
         
         // Kelola Produk / Varian
         Route::resource('products', ProductController::class);
 
         // Kelola Mitra Kami
         Route::resource('partners', PartnerController::class)->except(['create', 'show', 'edit']);
+
+        // Kelola Tersedia di Toko
+        Route::resource('available-stores', AvailableStoreController::class);
+
+        // Kelola Pop-up Promo (Ditambahkan dengan benar tanpa double prefix)
+        Route::resource('promos', PromoController::class)->only(['index', 'store', 'destroy']);
     });
 
 });

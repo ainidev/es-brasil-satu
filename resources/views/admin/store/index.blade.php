@@ -12,8 +12,8 @@
 <body class="bg-slate-50 font-sans text-slate-800 antialiased">
     <div class="flex h-screen overflow-hidden">
         
-        <!-- SIDEBAR (bg-slate-900) -->
-        <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between shadow-xl">
+        <!-- SIDEBAR -->
+        <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between shadow-xl flex-shrink-0">
             <div>
                 <!-- Brand / Logo Header -->
                 <div class="p-6 border-b border-slate-800 flex items-center space-x-3">
@@ -28,34 +28,41 @@
 
                 <!-- Navigation Links -->
                 <nav class="p-4 space-y-1.5">
-                    <!-- Dashboard -->
                     <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
                         <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
                         <span>Dashboard</span>
                     </a>
 
-                    <!-- Tentang Kami -->
                     <a href="{{ route('admin.about.edit') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
                         <i data-lucide="info" class="w-5 h-5"></i>
                         <span>Tentang Kami</span>
                     </a>
 
-                    <!-- Produk -->
                     <a href="{{ route('admin.products.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
                         <i data-lucide="package" class="w-5 h-5"></i>
                         <span>Produk / Varian</span>
                     </a>
 
-                    <!-- Informasi / Profil Toko (ACTIVE MENU) -->
+                    <!-- ACTIVE MENU (Profil Toko) -->
                     <a href="{{ route('admin.store.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-red-600 text-white font-medium shadow-lg shadow-red-600/20 transition">
                         <i data-lucide="store" class="w-5 h-5"></i>
                         <span>Profil Toko</span>
                     </a>
 
-                    <!-- Mitra Kami -->
                     <a href="{{ route('admin.partners.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
                         <i data-lucide="handshake" class="w-5 h-5"></i>
                         <span>Mitra Kami</span>
+                    </a>
+
+                    <!-- MENU TERSEDIA DI TOKO (SUDAH DITAMBAHKAN DENGAN BADGE ANGKA) -->
+                    <a href="{{ route('admin.available-stores.index') }}" class="flex items-center justify-between px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                            <span>Tersedia di Toko</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-xs font-bold rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                            {{ $totalAvailableStores ?? 0 }}
+                        </span>
                     </a>
                 </nav>
             </div>
@@ -77,7 +84,6 @@
             
             <!-- Top Navbar Header -->
             <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center shadow-sm">
-               <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center shadow-sm">
                 <div class="flex items-center space-x-2 text-slate-500 text-sm">
                     <i data-lucide="home" class="w-4 h-4"></i>
                     <span>/</span>
@@ -90,7 +96,7 @@
                     </div>
                     <span class="font-semibold text-sm text-slate-700">Administrator</span>
                 </div>
-            </header>>
+            </header>
 
             <!-- Main Content Scrollable -->
             <main class="flex-1 overflow-y-auto p-8">
@@ -109,11 +115,11 @@
                 @endif
 
                 <!-- FORM PROFIL TOKO -->
-                <form action="{{ route('admin.store.update') }}" method="POST" class="space-y-6 max-w-4xl">
+                <form action="{{ route('admin.store.update', $store->id ?? 1) }}" method="POST" class="space-y-6 max-w-4xl">
                     @csrf
                     @method('PUT')
 
-                    <!-- Card 1: Informasi Kontak Utam -->
+                    <!-- Card 1: Informasi Kontak Utama -->
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
                         <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100">
                             <div class="p-2 bg-red-50 text-red-600 rounded-lg">
@@ -129,6 +135,7 @@
                             <div>
                                 <label class="block text-xs font-semibold text-slate-600 uppercase mb-2">Nama Toko / Outlet</label>
                                 <input type="text" name="store_name" value="{{ old('store_name', $store->store_name ?? 'Brasil Es Krim & Es Puter') }}" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-red-600 text-sm">
+                                @error('store_name') <span class="text-xs text-rose-500 mt-1 block">{{ $message }}</span> @enderror
                             </div>
 
                             <div>
@@ -139,6 +146,7 @@
                                     </span>
                                     <input type="text" name="phone" value="{{ old('phone', $store->phone ?? '081234567890') }}" required class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-red-600 text-sm">
                                 </div>
+                                @error('phone') <span class="text-xs text-rose-500 mt-1 block">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="md:col-span-2">
@@ -149,6 +157,7 @@
                                     </span>
                                     <input type="email" name="email" value="{{ old('email', $store->email ?? 'info@brasileskrim.com') }}" required class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-red-600 text-sm">
                                 </div>
+                                @error('email') <span class="text-xs text-rose-500 mt-1 block">{{ $message }}</span> @enderror
                             </div>
                         </div>
                     </div>
@@ -169,6 +178,7 @@
                             <div>
                                 <label class="block text-xs font-semibold text-slate-600 uppercase mb-2">Alamat Lengkap Toko</label>
                                 <textarea name="address" rows="3" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-red-600 text-sm resize-none" placeholder="Masukkan alamat lengkap toko...">{{ old('address', $store->address ?? 'Jl. Raya Bogor No. 123, Bogor, Jawa Barat') }}</textarea>
+                                @error('address') <span class="text-xs text-rose-500 mt-1 block">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -180,6 +190,7 @@
                                         </span>
                                         <input type="text" name="opening_hours" value="{{ old('opening_hours', $store->opening_hours ?? 'Senin - Minggu (09:00 - 21:00 WIB)') }}" required class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-red-600 text-sm">
                                     </div>
+                                    @error('opening_hours') <span class="text-xs text-rose-500 mt-1 block">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div>
@@ -190,6 +201,7 @@
                                         </span>
                                         <input type="url" name="maps_link" value="{{ old('maps_link', $store->maps_link ?? 'https://maps.google.com') }}" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-red-600 text-sm" placeholder="https://maps.app.goo.gl/...">
                                     </div>
+                                    @error('maps_link') <span class="text-xs text-rose-500 mt-1 block">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -249,7 +261,6 @@
 
     <!-- SCRIPT JAVASCRIPT -->
     <script>
-        // Inisialisasi Lucide Icons
         lucide.createIcons();
     </script>
 </body>
