@@ -41,12 +41,7 @@
                         <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
                         <span>Dashboard</span>
                     </a>
-
-                    <a href="{{ route('admin.about.edit') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
-                        <i data-lucide="info" class="w-5 h-5"></i>
-                        <span>Tentang Kami</span>
-                    </a>
-
+                    
                     <a href="{{ route('admin.products.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
                         <i data-lucide="package" class="w-5 h-5"></i>
                         <span>Produk / Varian</span>

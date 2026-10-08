@@ -48,12 +48,6 @@
                         <span>Produk / Varian</span>
                     </a>
 
-                    <a href="{{ route('admin.store.index') }}"
-                        class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
-                        <i data-lucide="store" class="w-5 h-5"></i>
-                        <span>Profil Toko</span>
-                    </a>
-
                     <a href="{{ route('admin.partners.index') }}"
                         class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition">
                         <i data-lucide="handshake" class="w-5 h-5"></i>
@@ -164,26 +158,6 @@
                         <a href="{{ route('admin.partners.index') }}"
                             class="mt-4 text-xs font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center space-x-1">
                             <span>Kelola Mitra</span>
-                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                        </a>
-                    </div>
-
-                    <!-- Card 3: Profil Toko -->
-                    <div
-                        class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                        <div class="flex items-start justify-between">
-                            <div>
-                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Profil
-                                    Toko</span>
-                                <h3 class="text-2xl font-extrabold text-slate-900 mt-2">Aktif</h3>
-                            </div>
-                            <div class="p-3 bg-amber-50 text-amber-600 rounded-xl">
-                                <i data-lucide="store" class="w-6 h-6"></i>
-                            </div>
-                        </div>
-                        <a href="{{ route('admin.store.index') }}"
-                            class="mt-4 text-xs font-semibold text-amber-600 hover:text-amber-700 inline-flex items-center space-x-1">
-                            <span>Edit Alamat & WA</span>
                             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                         </a>
                     </div>

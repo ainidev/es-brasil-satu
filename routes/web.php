@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PromoController;
 use App\Models\About;
 use App\Models\Partner;
 use App\Models\Store;
+use App\Models\AvailableStore;
 use App\Models\Product;
 use App\Models\Promo;
 
@@ -27,14 +28,15 @@ use App\Models\Promo;
 
 // --- 1. HALAMAN UTAMA / LANDING PAGE (UPDATE DATA DINAMIS) ---
 Route::get('/', function () {
-    $about    = About::first();
-    $partners = Partner::all();
-    $store    = Store::first();   // Untuk fallback jika cuma 1 toko
-    $stores   = Store::all();     // Untuk loop banyak toko
-    $products = Product::all();
-    $promo    = Promo::where('is_active', true)->latest()->first(); // Ambil promo aktif terbaru
+    $about           = About::first();
+    $partners        = Partner::all();
+    $store           = Store::first();          // Untuk Profil Toko Utama
+    $stores          = Store::all();            // Untuk loop banyak toko (Store)
+    $availableStores = AvailableStore::all();   // Ambil data tersedia di toko
+    $products        = Product::all();
+    $promo           = Promo::where('is_active', true)->latest()->first(); 
 
-    return view('welcome', compact('about', 'partners', 'store', 'stores', 'products', 'promo'));
+    return view('welcome', compact('about', 'partners', 'store', 'stores', 'availableStores', 'products', 'promo'));
 })->name('home');
 
 
@@ -68,7 +70,7 @@ Route::post('/admin/logout', [AuthController::class, 'logout'])->name('logout');
 // --- 5. HALAMAN ADMIN & TERPROTEKSI (HARUS LOGIN) ---
 Route::middleware(['auth'])->group(function () {
 
-    // Dashboard User Biasa (jika ada)
+    // Dashboard User Biasa
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['verified'])->name('dashboard');
@@ -100,8 +102,8 @@ Route::middleware(['auth'])->group(function () {
         // Kelola Tersedia di Toko
         Route::resource('available-stores', AvailableStoreController::class);
 
-        // Kelola Pop-up Promo (Ditambahkan dengan benar tanpa double prefix)
-        Route::resource('promos', PromoController::class)->only(['index', 'store', 'destroy']);
+        // Kelola Pop-up Promo (Buka akses CRUD penuh termasuk method update)
+        Route::resource('promos', PromoController::class);
     });
 
 });

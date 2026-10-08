@@ -216,7 +216,7 @@ header.scrolled .nav-logo-sub{
 .hero {
     height: 100vh;
     width: 100%;
-    background-image: url("{{ asset('assets/logo4.png') }}");
+    background-image: url("{{ asset('assets/logofiks.png') }}");
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
@@ -2144,58 +2144,38 @@ header.scrolled .nav-menu a::after {
     </div>
 
     <!-- Tersedia di Toko - Slider -->
-    <section id="toko" class="stores">
-        <hr class="separator">
-        <h2 class="section-title">Tersedia di Toko</h2>
+<section id="toko" class="stores">
+    <hr class="separator">
+    <h2 class="section-title">Tersedia di Toko</h2>
 
-        <div class="slider-wrap" aria-label="Slider Toko">
-            <div class="slider-track">
-                <!-- Set Asli -->
+    <div class="slider-wrap" aria-label="Slider Toko">
+        <div class="slider-track">
+            
+            {{-- Set Asli --}}
+            @forelse($availableStores as $item)
                 <div class="store-card">
-                    <div class="store-img" style="background-image: url('{{ asset('assets/tempat.png') }}');">
+                    <div class="store-img" style="background-image: url('{{ $item->image ? asset('storage/' . $item->image) : asset('assets/tempat.png') }}');">
                     </div>
-                    <p>Duta Buah</p>
+                    <p>{{ $item->name }}</p>
                 </div>
+            @empty
                 <div class="store-card">
-                    <div class="store-img" style="background-image: url('{{ asset('assets/tempat.png') }}');">
-                    </div>
-                    <p>Duta Buah</p>
+                    <p class="text-gray-500">Belum ada toko tersedia</p>
                 </div>
-                <div class="store-card">
-                    <div class="store-img" style="background-image: url('{{ asset('assets/tempat.png') }}');">
-                    </div>
-                    <p>Duta Buah</p>
-                </div>
-                <div class="store-card">
-                    <div class="store-img" style="background-image: url('{{ asset('assets/tempat.png') }}');">
-                    </div>
-                    <p>Duta Buah</p>
-                </div>
+            @endforelse
 
-                <!-- Duplikat -->
+            {{-- Duplikat (Untuk Efek Infinite Scroll Slider) --}}
+            @foreach($availableStores as $item)
                 <div class="store-card">
-                    <div class="store-img" style="background-image: url('{{ asset('assets/tempat.png') }}');">
+                    <div class="store-img" style="background-image: url('{{ $item->image ? asset('storage/' . $item->image) : asset('assets/tempat.png') }}');">
                     </div>
-                    <p>Duta Buah</p>
+                    <p>{{ $item->name }}</p>
                 </div>
-                <div class="store-card">
-                    <div class="store-img" style="background-image: url('{{ asset('assets/tempat.png') }}');">
-                    </div>
-                    <p>Duta Buah</p>
-                </div>
-                <div class="store-card">
-                    <div class="store-img" style="background-image: url('{{ asset('assets/tempat.png') }}');">
-                    </div>
-                    <p>Duta Buah</p>
-                </div>
-                <div class="store-card">
-                    <div class="store-img" style="background-image: url('{{ asset('assets/tempat.png') }}');">
-                    </div>
-                    <p>Duta Buah</p>
-                </div>
-            </div>
+            @endforeach
+
         </div>
-    </section>
+    </div>
+</section>
 
 <!-- CDN Swiper (jika belum ditaruh di <head>) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -2373,7 +2353,6 @@ header.scrolled .nav-menu a::after {
     </div>
 </div>
 
-<
 
 <!-- Struktur HTML -->
 
